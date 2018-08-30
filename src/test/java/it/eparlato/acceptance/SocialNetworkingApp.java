@@ -1,6 +1,5 @@
 package it.eparlato.acceptance;
 
-import javax.annotation.processing.AbstractProcessor;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
