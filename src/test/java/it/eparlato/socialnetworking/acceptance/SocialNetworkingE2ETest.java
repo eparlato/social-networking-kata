@@ -1,5 +1,6 @@
-package it.eparlato.acceptance;
+package it.eparlato.socialnetworking.acceptance;
 
+import it.eparlato.socialnetworking.SocialNetworkingApp;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

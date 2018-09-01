@@ -43,6 +43,7 @@
 
 ## TODO
 
-* how to manage time in Java
-* how to convert from time (300 sec) to string (5 minutes)
-* how to store other users messages if I follow them (a stack?) 
+* finish the first test inSocialNetworkProcessorTest
+* test drive the implementation of all the collaborators, in order to have a working system that can store user messages
+into a timeline
+  * what will the timeline be? List, stack...

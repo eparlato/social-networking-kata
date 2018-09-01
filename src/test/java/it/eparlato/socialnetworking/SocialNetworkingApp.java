@@ -1,4 +1,4 @@
-package it.eparlato.acceptance;
+package it.eparlato.socialnetworking;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -16,7 +16,7 @@ public class SocialNetworkingApp {
 
     public void run() {
         Scanner scanner = new Scanner(inputStream);
-        socialNetworkProcessor = new SocialNetworkProcessor();
+        socialNetworkProcessor = new SocialNetworkProcessor(new CommandParserDummy());
         String result;
 
         while (scanner.hasNext()) {
