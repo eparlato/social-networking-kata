@@ -18,4 +18,23 @@ public class Publish implements Command {
         User user = userRepository.getUser(username);
         user.post(message);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof Publish)) {
+            return false;
+        }
+
+        Publish that = (Publish) obj;
+
+        if (!(this.username.equals(that.username))) {
+            return false;
+        }
+
+        if(!(this.message.equals(that.message))) {
+            return false;
+        }
+
+        return true;
+    }
 }
