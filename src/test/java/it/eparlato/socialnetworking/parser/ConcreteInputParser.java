@@ -4,10 +4,10 @@ import it.eparlato.socialnetworking.command.Command;
 import it.eparlato.socialnetworking.command.Publish;
 import it.eparlato.socialnetworking.user.UserRepository;
 
-public class InputParserConcrete implements InputParser {
+public class ConcreteInputParser implements InputParser {
     private UserRepository userRepository;
 
-    public InputParserConcrete(UserRepository userRepository) {
+    public ConcreteInputParser(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

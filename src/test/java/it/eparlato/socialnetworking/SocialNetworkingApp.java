@@ -1,6 +1,6 @@
 package it.eparlato.socialnetworking;
 
-import it.eparlato.socialnetworking.parser.InputParserDummy;
+import it.eparlato.socialnetworking.parser.DummyInputParser;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -18,7 +18,7 @@ public class SocialNetworkingApp {
 
     public void run() {
         Scanner scanner = new Scanner(inputStream);
-        socialNetworkProcessor = new SocialNetworkProcessor(new InputParserDummy());
+        socialNetworkProcessor = new SocialNetworkProcessor(new DummyInputParser());
         String result;
 
         while (scanner.hasNext()) {
