@@ -1,4 +1,4 @@
-package it.eparlato.socialnetworking.acceptance;
+package it.eparlato.socialnetworking.e2e;
 
 import it.eparlato.socialnetworking.SocialNetworkingApp;
 import it.eparlato.socialnetworking.parser.DummyInputParser;
@@ -10,7 +10,7 @@ import java.io.*;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class SocialNetworkingE2ETest {
+public class SocialNetworkingApplicationShould {
     ByteArrayOutputStream canvas = new ByteArrayOutputStream();
     PrintStream originalSystemOut = System.out;
     PrintStream hijackedSystemOut = new PrintStream(canvas);
@@ -29,7 +29,7 @@ public class SocialNetworkingE2ETest {
     }
 
     @Test
-    public void should_return_an_error_message_if_I_just_write_a_user_name() throws UnsupportedEncodingException {
+    public void return_an_error_message_if_I_just_write_a_user_name() throws UnsupportedEncodingException {
         commands = "Alice";
 
         SocialNetworkingApp socialNetworkingApp = new SocialNetworkingApp(getInputStreamFrom(commands), System.out, new DummyInputParser());

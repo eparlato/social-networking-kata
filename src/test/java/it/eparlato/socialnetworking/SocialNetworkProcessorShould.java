@@ -10,12 +10,12 @@ import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class SocialNetworkProcessorTest {
+public class SocialNetworkProcessorShould {
     @Rule
     public final JUnitRuleMockery context = new JUnitRuleMockery();
 
     @Test
-    public void should_handle_a_publish_command() {
+    public void handle_a_publish_command() {
         final String command = "Alice -> I love the weather today";
         final InputParser parser = context.mock(InputParser.class);
         final UserRepository userRepository = context.mock(UserRepository.class);
