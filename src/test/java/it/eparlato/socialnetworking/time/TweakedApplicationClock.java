@@ -5,29 +5,44 @@ public class TweakedApplicationClock implements ApplicationClock {
     private final long ONE_SECOND = 1000;
     private final long ONE_MINUTE = 60 * 1000;
 
-    private long now;
+    private long currentTimeMillis;
 
     public TweakedApplicationClock(long now) {
-        this.now = now;
+        this.currentTimeMillis = now;
     }
 
     @Override
-    public long now() {
-        return now;
+    public long currentTimeMillis() {
+        return currentTimeMillis;
     }
 
     public TweakedApplicationClock subtractMinutes(int minutes) {
-        this.now -= (minutes * ONE_MINUTE);
+        this.currentTimeMillis -= (minutes * ONE_MINUTE);
         return this;
     }
 
     public TweakedApplicationClock subtractSeconds(int seconds) {
-        this.now -= (seconds * ONE_SECOND);
+        this.currentTimeMillis -= (seconds * ONE_SECOND);
         return this;
     }
 
     public TweakedApplicationClock subtractHours(int hours) {
-        this.now -= (hours * ONE_HOUR);
+        this.currentTimeMillis -= (hours * ONE_HOUR);
+        return this;
+    }
+
+    public TweakedApplicationClock addMinutes(int minutes) {
+        this.currentTimeMillis += (minutes * ONE_MINUTE);
+        return this;
+    }
+
+    public TweakedApplicationClock addHours(int hours) {
+        this.currentTimeMillis += (hours * ONE_HOUR);
+        return this;
+    }
+
+    public TweakedApplicationClock addSeconds(int seconds) {
+        this.currentTimeMillis += (seconds * ONE_SECOND);
         return this;
     }
 }

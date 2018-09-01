@@ -3,6 +3,7 @@ package it.eparlato.socialnetworking;
 import it.eparlato.socialnetworking.parser.ConcreteInputParser;
 import it.eparlato.socialnetworking.parser.DummyInputParser;
 import it.eparlato.socialnetworking.parser.InputParser;
+import it.eparlato.socialnetworking.time.SystemApplicationClock;
 import it.eparlato.socialnetworking.user.InMemoryUserRepository;
 
 import java.io.InputStream;
@@ -35,7 +36,8 @@ public class SocialNetworkingApp {
     }
 
     public static void main(String[] args) {
-        SocialNetworkingApp app = new SocialNetworkingApp(System.in, System.out, new ConcreteInputParser(new InMemoryUserRepository()));
+        SocialNetworkingApp app = new SocialNetworkingApp(System.in, System.out,
+                new ConcreteInputParser(new InMemoryUserRepository(), new SystemApplicationClock()));
         app.run();
     }
 }

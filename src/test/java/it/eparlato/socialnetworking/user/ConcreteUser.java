@@ -1,5 +1,9 @@
 package it.eparlato.socialnetworking.user;
 
+import it.eparlato.socialnetworking.Message;
+
+import java.util.LinkedList;
+
 public class ConcreteUser implements User {
     private final String userName;
 
@@ -9,6 +13,11 @@ public class ConcreteUser implements User {
 
     public void post(String message) {
         System.out.println(String.format("User %s posted the message: %s", userName, message));
+    }
+
+    @Override
+    public LinkedList<Message> read() {
+        return new LinkedList<Message>();
     }
 
     @Override

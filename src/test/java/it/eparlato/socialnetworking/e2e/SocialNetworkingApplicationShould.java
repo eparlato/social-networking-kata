@@ -1,9 +1,16 @@
 package it.eparlato.socialnetworking.e2e;
 
+import it.eparlato.socialnetworking.SocialNetworkProcessor;
 import it.eparlato.socialnetworking.SocialNetworkingApp;
+import it.eparlato.socialnetworking.parser.ConcreteInputParser;
 import it.eparlato.socialnetworking.parser.DummyInputParser;
+import it.eparlato.socialnetworking.time.ApplicationClock;
+import it.eparlato.socialnetworking.time.TweakedApplicationClock;
+import it.eparlato.socialnetworking.user.InMemoryUserRepository;
+import jdk.nashorn.internal.runtime.options.Options;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.*;
@@ -36,6 +43,30 @@ public class SocialNetworkingApplicationShould {
         socialNetworkingApp.run();
 
         String expected = "User Alice doesn't exist" + System.getProperty("line.separator");
+
+        assertEquals(expected, canvas.toString("UTF-8"));
+    }
+
+    // TODO: this package is not going to be e2e anymore, but acceptance
+    // remove the first tests, the e2e one. It's useless
+
+    @Test
+    public void return_the_user_timeline_when_a_user_name_is_typed() throws UnsupportedEncodingException {
+        TweakedApplicationClock applicationClock = new TweakedApplicationClock(System.currentTimeMillis());
+        SocialNetworkProcessor socialNetworkProcessor = new SocialNetworkProcessor(
+                new ConcreteInputParser(new InMemoryUserRepository(), applicationClock));
+
+        applicationClock.subtractMinutes(2);
+        socialNetworkProcessor.process("Bob -> Damn! We lost!");
+
+        applicationClock.addMinutes(1);
+        socialNetworkProcessor.process("Bob -> Good game though");
+
+        socialNetworkProcessor.process("Bob");
+
+        String expected =
+                "Good game though. (1 minute ago)" + System.getProperty("line.separator") +
+                "Damn! We lost! (2 minutes ago)" + System.getProperty("line.separator");
 
         assertEquals(expected, canvas.toString("UTF-8"));
     }

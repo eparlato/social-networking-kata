@@ -5,13 +5,15 @@ import it.eparlato.socialnetworking.user.UserRepository;
 
 public class Publish implements Command {
     private final UserRepository userRepository;
+    private final long timeOfPublishing;
     private String username;
     private String message;
 
-    public Publish(String username, String message, UserRepository userRepository) {
+    public Publish(String username, String message, UserRepository userRepository, long timeOfPublishing) {
         this.username = username;
         this.message = message;
         this.userRepository = userRepository;
+        this.timeOfPublishing = timeOfPublishing;
     }
 
     public void execute() {

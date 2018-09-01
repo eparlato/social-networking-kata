@@ -12,45 +12,52 @@ public class TweakedApplicationClockShould {
     private final long ONE_SECOND = 1000;
 
     long now;
-    TweakedApplicationClock timeManager;
+    TweakedApplicationClock applicationClock;
 
     @Before
     public void setup() {
         now = System.currentTimeMillis();
-        timeManager = new TweakedApplicationClock(now);
+        applicationClock = new TweakedApplicationClock(now);
     }
 
     @Test
     public void be_able_to_subtract_five_minutes_from_current_time() {
         long fiveMinutesAgo = now - (5 * ONE_MINUTE);
-        timeManager.subtractMinutes(5);
+        applicationClock.subtractMinutes(5);
 
-        assertEquals(fiveMinutesAgo, timeManager.now());
+        assertEquals(fiveMinutesAgo, applicationClock.currentTimeMillis());
     }
 
     @Test
     public void be_able_to_subtract_fifteen_second_from_current_time() {
         long fifteenSecondsAgo = now - (15 * ONE_SECOND);
-        timeManager.subtractSeconds(15);
+        applicationClock.subtractSeconds(15);
 
-        assertEquals(fifteenSecondsAgo, timeManager.now());
+        assertEquals(fifteenSecondsAgo, applicationClock.currentTimeMillis());
     }
 
     @Test
     public void be_able_to_subtract_3_hours_from_current_time() {
         long threeHoursAgo = now - (3 * ONE_HOUR);
-        timeManager.subtractHours(3);
+        applicationClock.subtractHours(3);
 
-        assertEquals(threeHoursAgo, timeManager.now());
+        assertEquals(threeHoursAgo, applicationClock.currentTimeMillis());
     }
 
     @Test
-    public void be_able_to_subtract_huours_minutes_seconds_from_currente_time() {
+    public void be_able_to_subtract_hours_minutes_seconds_from_currente_time() {
         long oneHourFiftyNineMinutesAgo = now - ( (1 * ONE_HOUR) + (59 * ONE_MINUTE));
-        timeManager.subtractHours(1).subtractMinutes(59);
+        applicationClock.subtractHours(1).subtractMinutes(59);
 
-        assertEquals(oneHourFiftyNineMinutesAgo, timeManager.now());
+        assertEquals(oneHourFiftyNineMinutesAgo, applicationClock.currentTimeMillis());
     }
 
+    @Test
+    public void be_able_to_add_hours_minutes_second_to_current_time() {
+        long oneMinutesThirtySecondsAgo = now - (1 * ONE_MINUTE) - (30 * ONE_SECOND);
 
+        applicationClock.subtractHours(2).addHours(1).addMinutes(58).addSeconds(30);
+
+        assertEquals(oneMinutesThirtySecondsAgo, applicationClock.currentTimeMillis());
+    }
 }
