@@ -1,5 +1,8 @@
 package it.eparlato.socialnetworking;
 
+import it.eparlato.socialnetworking.command.Command;
+import it.eparlato.socialnetworking.command.CommandParser;
+
 public class SocialNetworkProcessor {
     private final CommandParser commandParser;
 

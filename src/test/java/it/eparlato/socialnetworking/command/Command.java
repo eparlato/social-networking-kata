@@ -1,4 +1,4 @@
-package it.eparlato.socialnetworking;
+package it.eparlato.socialnetworking.command;
 
 public interface Command {
     void execute();

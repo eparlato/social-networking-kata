@@ -1,5 +1,10 @@
 package it.eparlato.socialnetworking;
 
+import it.eparlato.socialnetworking.command.Command;
+import it.eparlato.socialnetworking.command.CommandParser;
+import it.eparlato.socialnetworking.command.Publish;
+import it.eparlato.socialnetworking.user.User;
+import it.eparlato.socialnetworking.user.UserRepository;
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Rule;

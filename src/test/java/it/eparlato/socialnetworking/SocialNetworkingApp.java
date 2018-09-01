@@ -1,5 +1,7 @@
 package it.eparlato.socialnetworking;
 
+import it.eparlato.socialnetworking.command.CommandParserDummy;
+
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
