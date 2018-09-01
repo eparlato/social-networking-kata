@@ -1,7 +1,7 @@
 package it.eparlato.socialnetworking;
 
 import it.eparlato.socialnetworking.command.Command;
-import it.eparlato.socialnetworking.command.CommandParser;
+import it.eparlato.socialnetworking.parser.InputParser;
 import it.eparlato.socialnetworking.command.Publish;
 import it.eparlato.socialnetworking.user.User;
 import it.eparlato.socialnetworking.user.UserRepository;
@@ -17,7 +17,7 @@ public class SocialNetworkProcessorTest {
     @Test
     public void should_handle_a_publish_command() {
         final String command = "Alice -> I love the weather today";
-        final CommandParser parser = context.mock(CommandParser.class);
+        final InputParser parser = context.mock(InputParser.class);
         final UserRepository userRepository = context.mock(UserRepository.class);
         final User userAlice = context.mock(User.class);
 

@@ -1,7 +1,7 @@
-package it.eparlato.socialnetworking.command;
+package it.eparlato.socialnetworking.parser;
 
 import it.eparlato.socialnetworking.command.Command;
 
-public interface CommandParser {
+public interface InputParser {
     Command parse(String command);
 }
