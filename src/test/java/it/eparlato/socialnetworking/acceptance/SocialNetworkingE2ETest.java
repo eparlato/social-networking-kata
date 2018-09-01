@@ -1,6 +1,7 @@
 package it.eparlato.socialnetworking.acceptance;
 
 import it.eparlato.socialnetworking.SocialNetworkingApp;
+import it.eparlato.socialnetworking.parser.DummyInputParser;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,7 +32,7 @@ public class SocialNetworkingE2ETest {
     public void should_return_an_error_message_if_I_just_write_a_user_name() throws UnsupportedEncodingException {
         commands = "Alice";
 
-        SocialNetworkingApp socialNetworkingApp = new SocialNetworkingApp(getInputStreamFrom(commands), System.out);
+        SocialNetworkingApp socialNetworkingApp = new SocialNetworkingApp(getInputStreamFrom(commands), System.out, new DummyInputParser());
         socialNetworkingApp.run();
 
         String expected = "User Alice doesn't exist" + System.getProperty("line.separator");

@@ -8,7 +8,7 @@ public class ConcreteUser implements User {
     }
 
     public void post(String message) {
-
+        System.out.println(String.format("User %s posted the message: %s", userName, message));
     }
 
     @Override

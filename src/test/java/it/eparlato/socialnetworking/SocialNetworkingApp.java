@@ -1,6 +1,9 @@
 package it.eparlato.socialnetworking;
 
+import it.eparlato.socialnetworking.parser.ConcreteInputParser;
 import it.eparlato.socialnetworking.parser.DummyInputParser;
+import it.eparlato.socialnetworking.parser.InputParser;
+import it.eparlato.socialnetworking.user.InMemoryUserRepository;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -9,16 +12,19 @@ import java.util.Scanner;
 public class SocialNetworkingApp {
     private final InputStream inputStream;
     private final PrintStream outputStream;
+    private final InputParser inputParser;
+
     private SocialNetworkProcessor socialNetworkProcessor;
 
-    public SocialNetworkingApp(InputStream inputStream, PrintStream outputStream) {
+    public SocialNetworkingApp(InputStream inputStream, PrintStream outputStream, InputParser inputParser) {
         this.inputStream = inputStream;
         this.outputStream = outputStream;
+        this.inputParser = inputParser;
     }
 
     public void run() {
         Scanner scanner = new Scanner(inputStream);
-        socialNetworkProcessor = new SocialNetworkProcessor(new DummyInputParser());
+        socialNetworkProcessor = new SocialNetworkProcessor(inputParser);
         String result;
 
         while (scanner.hasNext()) {
@@ -26,5 +32,10 @@ public class SocialNetworkingApp {
 
             outputStream.println(result);
         }
+    }
+
+    public static void main(String[] args) {
+        SocialNetworkingApp app = new SocialNetworkingApp(System.in, System.out, new ConcreteInputParser(new InMemoryUserRepository()));
+        app.run();
     }
 }
