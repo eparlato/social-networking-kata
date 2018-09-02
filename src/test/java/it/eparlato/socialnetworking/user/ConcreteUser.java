@@ -12,7 +12,7 @@ public class ConcreteUser implements User {
         this.userName = userName;
     }
 
-    public void post(String message, long timeOfPublishing) {
+    public void publish(String message, long timeOfPublishing) {
         messages.push(new Message(message, timeOfPublishing));
     }
 

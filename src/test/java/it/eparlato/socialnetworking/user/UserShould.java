@@ -12,9 +12,9 @@ public class UserShould {
     public void store_a_message_when_it_is_published() {
         User user = new ConcreteUser("Bob");
 
-        user.post("Damn! We lost!", System.currentTimeMillis());
-        user.post("Good game though.", System.currentTimeMillis());
-        user.post("Next time we will win!", System.currentTimeMillis());
+        user.publish("Damn! We lost!", System.currentTimeMillis());
+        user.publish("Good game though.", System.currentTimeMillis());
+        user.publish("Next time we will win!", System.currentTimeMillis());
 
         assertEquals(3, user.read().size());
     }
@@ -27,9 +27,9 @@ public class UserShould {
 
         User user = new ConcreteUser("Alice");
 
-        user.post(firstMessage, System.currentTimeMillis());
-        user.post(secondMessage, System.currentTimeMillis());
-        user.post(thirdMessage, System.currentTimeMillis());
+        user.publish(firstMessage, System.currentTimeMillis());
+        user.publish(secondMessage, System.currentTimeMillis());
+        user.publish(thirdMessage, System.currentTimeMillis());
 
         LinkedList<Message> messages = user.read();
 
