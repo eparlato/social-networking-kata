@@ -2,7 +2,7 @@ package it.eparlato.socialnetworking.command;
 
 import it.eparlato.socialnetworking.message.Message;
 import it.eparlato.socialnetworking.user.User;
-import it.eparlato.socialnetworking.user.UserRepository;
+import it.eparlato.socialnetworking.user.repository.UserRepository;
 
 import java.util.LinkedList;
 

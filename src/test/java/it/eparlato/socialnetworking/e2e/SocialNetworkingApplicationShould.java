@@ -4,13 +4,10 @@ import it.eparlato.socialnetworking.SocialNetworkProcessor;
 import it.eparlato.socialnetworking.SocialNetworkingApp;
 import it.eparlato.socialnetworking.parser.ConcreteInputParser;
 import it.eparlato.socialnetworking.parser.DummyInputParser;
-import it.eparlato.socialnetworking.time.ApplicationClock;
 import it.eparlato.socialnetworking.time.TweakedApplicationClock;
-import it.eparlato.socialnetworking.user.InMemoryUserRepository;
-import jdk.nashorn.internal.runtime.options.Options;
+import it.eparlato.socialnetworking.user.repository.InMemoryUserRepository;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.*;

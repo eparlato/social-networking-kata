@@ -1,4 +1,4 @@
-package it.eparlato.socialnetworking.user;
+package it.eparlato.socialnetworking.user.repository;
 
 import it.eparlato.socialnetworking.user.User;
 

@@ -4,11 +4,9 @@ import it.eparlato.socialnetworking.command.Command;
 import it.eparlato.socialnetworking.command.Publish;
 import it.eparlato.socialnetworking.command.Read;
 import it.eparlato.socialnetworking.time.TweakedApplicationClock;
-import it.eparlato.socialnetworking.user.DummyUserRepository;
+import it.eparlato.socialnetworking.user.repository.DummyUserRepository;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.time.MonthDay;
 
 import static junit.framework.TestCase.assertEquals;
 

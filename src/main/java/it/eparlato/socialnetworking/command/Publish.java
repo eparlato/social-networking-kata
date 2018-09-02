@@ -1,7 +1,7 @@
 package it.eparlato.socialnetworking.command;
 
 import it.eparlato.socialnetworking.user.User;
-import it.eparlato.socialnetworking.user.UserRepository;
+import it.eparlato.socialnetworking.user.repository.UserRepository;
 
 public class Publish implements Command {
     private final UserRepository userRepository;

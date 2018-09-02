@@ -4,7 +4,7 @@ import it.eparlato.socialnetworking.command.Command;
 import it.eparlato.socialnetworking.command.Publish;
 import it.eparlato.socialnetworking.command.Read;
 import it.eparlato.socialnetworking.time.ApplicationClock;
-import it.eparlato.socialnetworking.user.UserRepository;
+import it.eparlato.socialnetworking.user.repository.UserRepository;
 
 public class ConcreteInputParser implements InputParser {
     private final ApplicationClock applicationClock;

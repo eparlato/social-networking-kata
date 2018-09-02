@@ -5,13 +5,11 @@ import it.eparlato.socialnetworking.command.Read;
 import it.eparlato.socialnetworking.parser.InputParser;
 import it.eparlato.socialnetworking.command.Publish;
 import it.eparlato.socialnetworking.user.User;
-import it.eparlato.socialnetworking.user.UserRepository;
+import it.eparlato.socialnetworking.user.repository.UserRepository;
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Rule;
 import org.junit.Test;
-
-import java.util.LinkedList;
 
 
 public class SocialNetworkProcessorShould {

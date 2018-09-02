@@ -1,10 +1,9 @@
 package it.eparlato.socialnetworking;
 
 import it.eparlato.socialnetworking.parser.ConcreteInputParser;
-import it.eparlato.socialnetworking.parser.DummyInputParser;
 import it.eparlato.socialnetworking.parser.InputParser;
 import it.eparlato.socialnetworking.time.SystemApplicationClock;
-import it.eparlato.socialnetworking.user.InMemoryUserRepository;
+import it.eparlato.socialnetworking.user.repository.InMemoryUserRepository;
 
 import java.io.InputStream;
 import java.io.PrintStream;
