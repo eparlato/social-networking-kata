@@ -48,7 +48,7 @@ public class SocialNetworkingApplicationShould {
     // remove the first tests, the e2e one. It's useless
 
     @Test
-    public void return_the_user_timeline_when_a_user_name_is_typed() throws UnsupportedEncodingException {
+    public void show_the_user_timeline_when_the_user_name_is_typed() throws UnsupportedEncodingException {
         long now = System.currentTimeMillis();
         TweakedApplicationClock applicationClock = new TweakedApplicationClock(now);
         SocialNetworkProcessor socialNetworkProcessor = new SocialNetworkProcessor(

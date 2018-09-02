@@ -1,7 +1,7 @@
 package it.eparlato.socialnetworking;
 
 import it.eparlato.socialnetworking.command.Command;
-import it.eparlato.socialnetworking.command.Read;
+import it.eparlato.socialnetworking.command.ViewTimeline;
 import it.eparlato.socialnetworking.parser.InputParser;
 import it.eparlato.socialnetworking.command.Publish;
 import it.eparlato.socialnetworking.user.User;
@@ -24,7 +24,7 @@ public class SocialNetworkProcessorShould {
     SocialNetworkProcessor socialNetworkProcessor = new SocialNetworkProcessor(parser);
 
     @Test
-    public void execute_a_publish_command_when_the_input_is_a_publish() {
+    public void execute_a_Publish_command_if_the_input_is_a_username_followed_by_a_message() {
         final String input = "Alice -> I love the weather today";
         final String message = "I love the weather today";
 
@@ -48,22 +48,22 @@ public class SocialNetworkProcessorShould {
     }
 
     @Test
-    public void execute_a_read_command_if_the_input_is_a_reading() {
+    public void execute_a_ViewTimeline_command_if_the_input_is_a_username() {
         final String input = "Charlie";
 
-        final Command read = new Read("Charlie",
+        final Command viewTimeline = new ViewTimeline("Charlie",
                 userRepository,
                 IRRELEVANT_TIME_OF_PUBLISHING);
 
         context.checking(new Expectations() {
             {
                 oneOf(parser).parse(input);
-                will(returnValue(read));
+                will(returnValue(viewTimeline));
 
                 oneOf(userRepository).getUser("Charlie");
                 will(returnValue(user));
 
-                oneOf(user).read();
+                oneOf(user).getTimeline();
             }
         });
 

@@ -6,12 +6,12 @@ import it.eparlato.socialnetworking.user.repository.UserRepository;
 
 import java.util.LinkedList;
 
-public class Read implements Command {
+public class ViewTimeline implements Command {
     private final String username;
     private final UserRepository userRepository;
     private final long timeOfReading;
 
-    public Read(String username, UserRepository userRepository, long timeOfReading) {
+    public ViewTimeline(String username, UserRepository userRepository, long timeOfReading) {
         this.username = username;
         this.userRepository = userRepository;
         this.timeOfReading = timeOfReading;
@@ -20,20 +20,20 @@ public class Read implements Command {
     @Override
     public void execute() {
         User user = userRepository.getUser(username);
-        LinkedList<Message> messages = user.read();
+        LinkedList<Message> messages = user.getTimeline();
 
         for (Message message : messages) {
-            message.showReadingMessageOnConsole(timeOfReading);
+            message.showTimelineOnConsoleStartingFrom(timeOfReading);
         }
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof Read)) {
+        if(!(obj instanceof ViewTimeline)) {
             return false;
         }
 
-        Read that = (Read) obj;
+        ViewTimeline that = (ViewTimeline) obj;
 
         if(!(this.username.equals(that.username))) {
             return false;

@@ -2,7 +2,7 @@ package it.eparlato.socialnetworking.parser;
 
 import it.eparlato.socialnetworking.command.Command;
 import it.eparlato.socialnetworking.command.Publish;
-import it.eparlato.socialnetworking.command.Read;
+import it.eparlato.socialnetworking.command.ViewTimeline;
 import it.eparlato.socialnetworking.time.ApplicationClock;
 import it.eparlato.socialnetworking.user.repository.UserRepository;
 
@@ -23,7 +23,7 @@ public class ConcreteInputParser implements InputParser {
 
             return new Publish(userName, message, userRepository, applicationClock.currentTimeMillis());
         } else {
-            return new Read(input, userRepository, applicationClock.currentTimeMillis());
+            return new ViewTimeline(input, userRepository, applicationClock.currentTimeMillis());
         }
     }
 }

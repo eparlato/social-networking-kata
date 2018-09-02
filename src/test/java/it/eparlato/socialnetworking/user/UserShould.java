@@ -16,11 +16,11 @@ public class UserShould {
         user.publish("Good game though.", System.currentTimeMillis());
         user.publish("Next time we will win!", System.currentTimeMillis());
 
-        assertEquals(3, user.read().size());
+        assertEquals(3, user.getTimeline().size());
     }
 
     @Test
-    public void return_a_LIFO_list_of_messages_when_read_is_requested() {
+    public void return_a_LIFO_list_of_messages_when_the_timeline_is_requested() {
         String firstMessage = "Today it is raining.";
         String secondMessage = "Yesterday it was raining.";
         String thirdMessage = "What about tomorrow?";
@@ -31,7 +31,7 @@ public class UserShould {
         user.publish(secondMessage, System.currentTimeMillis());
         user.publish(thirdMessage, System.currentTimeMillis());
 
-        LinkedList<Message> messages = user.read();
+        LinkedList<Message> messages = user.getTimeline();
 
         assertEquals(thirdMessage, messages.pop().getText());
         assertEquals(secondMessage, messages.pop().getText());

@@ -8,6 +8,6 @@ public interface User {
 
     void publish(String message, long timeOfPublishing);
 
-    LinkedList<Message> read();
+    LinkedList<Message> getTimeline();
 
 }

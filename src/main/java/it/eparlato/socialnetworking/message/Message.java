@@ -15,7 +15,7 @@ public class Message {
         return text;
     }
 
-    public String readingText(long timeOfReading) {
+    public String formatForViewTimelineStartingFromTime(long timeOfReading) {
         return text + getElapsedTime(timeOfReading);
     }
 
@@ -37,7 +37,7 @@ public class Message {
         return "";
     }
 
-    public void showReadingMessageOnConsole(long timeOfReading) {
-        System.out.println(readingText(timeOfReading));
+    public void showTimelineOnConsoleStartingFrom(long timeOfReading) {
+        System.out.println(formatForViewTimelineStartingFromTime(timeOfReading));
     }
 }

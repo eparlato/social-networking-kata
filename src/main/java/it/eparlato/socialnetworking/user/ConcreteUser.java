@@ -17,7 +17,7 @@ public class ConcreteUser implements User {
     }
 
     @Override
-    public LinkedList<Message> read() {
+    public LinkedList<Message> getTimeline() {
         return messages;
     }
 
