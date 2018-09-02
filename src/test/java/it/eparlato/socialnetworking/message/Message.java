@@ -15,8 +15,8 @@ public class Message {
         return text;
     }
 
-    public String readingText(long now) {
-        return text + getElapsedTime(now);
+    public String readingText(long timeOfReading) {
+        return text + getElapsedTime(timeOfReading);
     }
 
     private String getElapsedTime(long now) {
@@ -33,5 +33,9 @@ public class Message {
         }
 
         return "";
+    }
+
+    public void showReadingMessageOnConsole(long timeOfReading) {
+        System.out.println(readingText(timeOfReading));
     }
 }

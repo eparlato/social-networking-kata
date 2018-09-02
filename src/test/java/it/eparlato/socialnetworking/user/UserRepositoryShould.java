@@ -10,8 +10,18 @@ public class UserRepositoryShould {
         User userAlice = new ConcreteUser("Alice");
         UserRepository repository = new InMemoryUserRepository();
 
+        assertEquals(null, repository.findUserInRepository("Alice"));
         assertEquals(userAlice, repository.getUser("Alice"));
     }
 
-    // get a user that is already in the repository (create a user with some messages published)
+    @Test
+    public void return_an_existing_user() {
+        UserRepository repository = new InMemoryUserRepository();
+
+        User userAlice = repository.getUser("Alice");
+        User userCharlie = repository.getUser("Charlie");
+
+        assertEquals(userCharlie, repository.findUserInRepository("Charlie"));
+        assertEquals(userAlice, repository.findUserInRepository("Alice"));
+    }
 }

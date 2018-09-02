@@ -1,7 +1,10 @@
 package it.eparlato.socialnetworking.command;
 
+import it.eparlato.socialnetworking.message.Message;
 import it.eparlato.socialnetworking.user.User;
 import it.eparlato.socialnetworking.user.UserRepository;
+
+import java.util.LinkedList;
 
 public class Read implements Command {
     private final String username;
@@ -17,7 +20,11 @@ public class Read implements Command {
     @Override
     public void execute() {
         User user = userRepository.getUser(username);
-        user.read();
+        LinkedList<Message> messages = user.read();
+
+        for (Message message : messages) {
+            message.showReadingMessageOnConsole(timeOfReading);
+        }
     }
 
     @Override
