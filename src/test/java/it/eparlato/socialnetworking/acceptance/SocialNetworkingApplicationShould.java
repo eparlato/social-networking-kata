@@ -39,19 +39,26 @@ public class SocialNetworkingApplicationShould {
         SocialNetworkProcessor socialNetworkProcessor = new SocialNetworkProcessor(
                 new ConcreteInputParser(new InMemoryUserRepository(), applicationClock));
 
-        applicationClock.subtractMinutes(2);
+        applicationClock.subtractMinutes(5);
+        socialNetworkProcessor.process("Alice -> I love the weather today");
+
+        applicationClock.addMinutes(3);
         socialNetworkProcessor.process("Bob -> Damn! We lost!");
 
         applicationClock.addMinutes(1);
         socialNetworkProcessor.process("Bob -> Good game though.");
 
         applicationClock.setCurrentTimeMillis(now);
+        socialNetworkProcessor.process("Alice");
         socialNetworkProcessor.process("Bob");
 
         String expected =
+                "I love the weather today (5 minutes ago)" + System.getProperty("line.separator") +
                 "Good game though. (1 minute ago)" + System.getProperty("line.separator") +
                         "Damn! We lost! (2 minutes ago)" + System.getProperty("line.separator");
 
         assertEquals(expected, canvas.toString("UTF-8"));
     }
+
+
 }

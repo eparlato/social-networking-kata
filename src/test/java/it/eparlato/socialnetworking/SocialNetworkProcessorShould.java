@@ -69,4 +69,6 @@ public class SocialNetworkProcessorShould {
 
         socialNetworkProcessor.process(input);
     }
+
+
 }
