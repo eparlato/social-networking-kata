@@ -2,12 +2,11 @@ package it.eparlato.socialnetworking.user;
 
 import it.eparlato.socialnetworking.message.Message;
 
-import java.util.LinkedList;
+import java.util.List;
 
 public interface User {
 
     void publish(String message, long timeOfPublishing);
 
-    LinkedList<Message> getTimeline();
-
+    List<Message> getTimeline();
 }

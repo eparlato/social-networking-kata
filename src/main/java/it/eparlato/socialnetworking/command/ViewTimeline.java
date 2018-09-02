@@ -3,8 +3,7 @@ package it.eparlato.socialnetworking.command;
 import it.eparlato.socialnetworking.message.Message;
 import it.eparlato.socialnetworking.user.User;
 import it.eparlato.socialnetworking.user.repository.UserRepository;
-
-import java.util.LinkedList;
+import java.util.List;
 
 public class ViewTimeline implements Command {
     private final String username;
@@ -20,7 +19,7 @@ public class ViewTimeline implements Command {
     @Override
     public void execute() {
         User user = userRepository.getUser(username);
-        LinkedList<Message> messages = user.getTimeline();
+        List<Message> messages = user.getTimeline();
 
         for (Message message : messages) {
             message.showTimelineOnConsoleStartingFrom(timeOfReading);
@@ -29,13 +28,17 @@ public class ViewTimeline implements Command {
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof ViewTimeline)) {
+        if (!(obj instanceof ViewTimeline)) {
             return false;
         }
 
         ViewTimeline that = (ViewTimeline) obj;
 
-        if(!(this.username.equals(that.username))) {
+        if (!(this.username.equals(that.username))) {
+            return false;
+        }
+
+        if (!(this.timeOfReading == that.timeOfReading)) {
             return false;
         }
 

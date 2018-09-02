@@ -15,7 +15,7 @@ public class Message {
         return text;
     }
 
-    public String formatForViewTimelineStartingFromTime(long timeOfReading) {
+    public String formatForViewTimelineStartingFrom(long timeOfReading) {
         return text + getElapsedTime(timeOfReading);
     }
 
@@ -38,6 +38,6 @@ public class Message {
     }
 
     public void showTimelineOnConsoleStartingFrom(long timeOfReading) {
-        System.out.println(formatForViewTimelineStartingFromTime(timeOfReading));
+        System.out.println(formatForViewTimelineStartingFrom(timeOfReading));
     }
 }

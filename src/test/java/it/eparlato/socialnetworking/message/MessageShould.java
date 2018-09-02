@@ -21,7 +21,8 @@ public class MessageShould {
 
         message = new Message("I'm in New York today! Anyone wants to have a coffee?", fifteenSecondsAgo);
 
-        assertEquals("I'm in New York today! Anyone wants to have a coffee? (15 seconds ago)", message.formatForViewTimelineStartingFromTime(now));
+        assertEquals("I'm in New York today! Anyone wants to have a coffee? (15 seconds ago)",
+                message.formatForViewTimelineStartingFrom(now));
     }
 
     @Test
@@ -30,7 +31,7 @@ public class MessageShould {
 
         message = new Message("I want a cup of coffee", threeMinutesAgo);
 
-        assertEquals("I want a cup of coffee (3 minutes ago)", message.formatForViewTimelineStartingFromTime(now));
+        assertEquals("I want a cup of coffee (3 minutes ago)", message.formatForViewTimelineStartingFrom(now));
     }
 
     @Test
@@ -39,7 +40,7 @@ public class MessageShould {
 
         message = new Message("I want a cup of tea", oneMinuteAgo);
 
-        assertEquals("I want a cup of tea (1 minute ago)", message.formatForViewTimelineStartingFromTime(now));
+        assertEquals("I want a cup of tea (1 minute ago)", message.formatForViewTimelineStartingFrom(now));
     }
 
     @Test
@@ -48,6 +49,6 @@ public class MessageShould {
 
         message = new Message("I feel good", oneSecondAgo);
 
-        assertEquals("I feel good (1 second ago)", message.formatForViewTimelineStartingFromTime(now));
+        assertEquals("I feel good (1 second ago)", message.formatForViewTimelineStartingFrom(now));
     }
 }

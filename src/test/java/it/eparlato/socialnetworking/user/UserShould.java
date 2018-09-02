@@ -2,8 +2,7 @@ package it.eparlato.socialnetworking.user;
 
 import it.eparlato.socialnetworking.message.Message;
 import org.junit.Test;
-
-import java.util.LinkedList;
+import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -31,10 +30,10 @@ public class UserShould {
         user.publish(secondMessage, System.currentTimeMillis());
         user.publish(thirdMessage, System.currentTimeMillis());
 
-        LinkedList<Message> messages = user.getTimeline();
+        List<Message> messages = user.getTimeline();
 
-        assertEquals(thirdMessage, messages.pop().getText());
-        assertEquals(secondMessage, messages.pop().getText());
-        assertEquals(firstMessage, messages.pop().getText());
+        assertEquals(thirdMessage, messages.get(0).getText());
+        assertEquals(secondMessage, messages.get(1).getText());
+        assertEquals(firstMessage, messages.get(2).getText());
     }
 }

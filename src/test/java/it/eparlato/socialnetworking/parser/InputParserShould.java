@@ -14,16 +14,18 @@ public class InputParserShould {
     Command expectedCommand;
     InputParser parser;
     String input;
+    long now;
 
     @Before
     public void setup() {
-        parser = new ConcreteInputParser(new DummyUserRepository(), new TweakedApplicationClock(System.currentTimeMillis()));
+        now = System.currentTimeMillis();
+        parser = new ConcreteInputParser(new DummyUserRepository(), new TweakedApplicationClock(now));
     }
 
     @Test
     public void return_a_Publish_command_if_the_input_is_a_username_followed_by_a_message() {
         input = "Bob -> Damn! We lost!";
-        expectedCommand = new Publish("Bob", "Damn! We lost!", new DummyUserRepository(), 0);
+        expectedCommand = new Publish("Bob", "Damn! We lost!", new DummyUserRepository(), now);
 
         assertEquals(expectedCommand, parser.parse(input));
     }
@@ -31,7 +33,7 @@ public class InputParserShould {
     @Test
     public void return_a_ViewTimeline_command_if_the_is_input_a_user_name() {
         input = "Alice";
-        expectedCommand = new ViewTimeline("Alice", new DummyUserRepository(), 0);
+        expectedCommand = new ViewTimeline("Alice", new DummyUserRepository(), now);
 
         assertEquals(expectedCommand, parser.parse(input));
     }

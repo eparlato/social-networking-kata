@@ -23,7 +23,7 @@ public class Publish implements Command {
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof Publish)) {
+        if (!(obj instanceof Publish)) {
             return false;
         }
 
@@ -33,7 +33,11 @@ public class Publish implements Command {
             return false;
         }
 
-        if(!(this.message.equals(that.message))) {
+        if (!(this.message.equals(that.message))) {
+            return false;
+        }
+
+        if(!(this.timeOfPublishing == that.timeOfPublishing)) {
             return false;
         }
 

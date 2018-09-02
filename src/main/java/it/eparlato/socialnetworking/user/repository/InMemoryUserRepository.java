@@ -2,8 +2,6 @@ package it.eparlato.socialnetworking.user.repository;
 
 import it.eparlato.socialnetworking.user.ConcreteUser;
 import it.eparlato.socialnetworking.user.User;
-import it.eparlato.socialnetworking.user.repository.UserRepository;
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -3,6 +3,7 @@ package it.eparlato.socialnetworking.user;
 import it.eparlato.socialnetworking.message.Message;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class ConcreteUser implements User {
     private final String userName;
@@ -17,7 +18,7 @@ public class ConcreteUser implements User {
     }
 
     @Override
-    public LinkedList<Message> getTimeline() {
+    public List<Message> getTimeline() {
         return messages;
     }
 
@@ -30,6 +31,5 @@ public class ConcreteUser implements User {
         ConcreteUser that = (ConcreteUser) obj;
 
         return this.userName.equals(that.userName);
-
     }
 }
