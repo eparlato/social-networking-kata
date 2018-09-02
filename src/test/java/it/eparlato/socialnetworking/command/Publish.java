@@ -18,7 +18,7 @@ public class Publish implements Command {
 
     public void execute() {
         User user = userRepository.getUser(username);
-        user.post(message);
+        user.post(message, timeOfPublishing);
     }
 
     @Override

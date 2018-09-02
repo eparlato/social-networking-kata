@@ -42,7 +42,7 @@ public class SocialNetworkProcessorShould {
                 oneOf(userRepository).getUser("Alice");
                 will(returnValue(user));
 
-                oneOf(user).post(message);
+                oneOf(user).post(message, IRRELEVANT_TIME_OF_PUBLISHING);
             }
         });
 
