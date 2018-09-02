@@ -1,7 +1,6 @@
 package it.eparlato.socialnetworking.time;
 
 public class TweakedApplicationClock implements ApplicationClock {
-    private final long ONE_HOUR = 60 * 60 * 1000;
     private final long ONE_SECOND = 1000;
     private final long ONE_MINUTE = 60 * 1000;
 
@@ -30,18 +29,8 @@ public class TweakedApplicationClock implements ApplicationClock {
         return this;
     }
 
-    public TweakedApplicationClock subtractHours(int hours) {
-        this.currentTimeMillis -= (hours * ONE_HOUR);
-        return this;
-    }
-
     public TweakedApplicationClock addMinutes(int minutes) {
         this.currentTimeMillis += (minutes * ONE_MINUTE);
-        return this;
-    }
-
-    public TweakedApplicationClock addHours(int hours) {
-        this.currentTimeMillis += (hours * ONE_HOUR);
         return this;
     }
 

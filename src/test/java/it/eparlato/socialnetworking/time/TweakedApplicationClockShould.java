@@ -37,27 +37,28 @@ public class TweakedApplicationClockShould {
     }
 
     @Test
-    public void be_able_to_subtract_3_hours_from_current_time() {
-        long threeHoursAgo = now - (3 * ONE_HOUR);
-        applicationClock.subtractHours(3);
+    public void be_able_to_subtract_minutes_and_seconds_from_currente_time() {
+        long fiftyHeightMinutesAndThirtySecondsAgo = now - (58 * ONE_MINUTE) - (30 * ONE_SECOND);
+        applicationClock.subtractMinutes(58).subtractSeconds(30);
 
-        assertEquals(threeHoursAgo, applicationClock.currentTimeMillis());
+        assertEquals(fiftyHeightMinutesAndThirtySecondsAgo, applicationClock.currentTimeMillis());
     }
 
     @Test
-    public void be_able_to_subtract_hours_minutes_seconds_from_currente_time() {
-        long oneHourFiftyNineMinutesAgo = now - ( (1 * ONE_HOUR) + (59 * ONE_MINUTE));
-        applicationClock.subtractHours(1).subtractMinutes(59);
-
-        assertEquals(oneHourFiftyNineMinutesAgo, applicationClock.currentTimeMillis());
-    }
-
-    @Test
-    public void be_able_to_add_hours_minutes_second_to_current_time() {
+    public void be_able_to_add_minutes_and_seconds_to_current_time() {
         long oneMinutesThirtySecondsAgo = now - (1 * ONE_MINUTE) - (30 * ONE_SECOND);
 
-        applicationClock.subtractHours(2).addHours(1).addMinutes(58).addSeconds(30);
+        applicationClock.subtractMinutes(3).addMinutes(1).addSeconds(30);
 
         assertEquals(oneMinutesThirtySecondsAgo, applicationClock.currentTimeMillis());
+    }
+
+    @Test
+    public void be_able_to_override_existing_time() {
+        applicationClock.subtractMinutes(5);
+
+        applicationClock.setCurrentTimeMillis(now);
+
+        assertEquals(now, applicationClock.currentTimeMillis());
     }
 }
