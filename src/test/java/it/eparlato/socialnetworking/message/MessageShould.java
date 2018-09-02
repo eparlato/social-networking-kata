@@ -25,4 +25,24 @@ public class MessageShould {
 
         assertEquals("I want a cup of coffee (3 minutes ago)", message.readingText(now));
     }
+
+    @Test
+    public void write_a_proper_message_if_the_message_is_one_minute_old() {
+        long now = System.currentTimeMillis();
+        long threeMinutesAgo = new TweakedApplicationClock(now).subtractMinutes(1).currentTimeMillis();
+
+        Message message = new Message("I want a cup of tea", threeMinutesAgo);
+
+        assertEquals("I want a cup of tea (1 minute ago)", message.readingText(now));
+    }
+
+    @Test
+    public void write_a_proper_message_if_the_message_is_one_second_old() {
+        long now = System.currentTimeMillis();
+        long threeMinutesAgo = new TweakedApplicationClock(now).subtractSeconds(1).currentTimeMillis();
+
+        Message message = new Message("I feel good", threeMinutesAgo);
+
+        assertEquals("I feel good (1 second ago)", message.readingText(now));
+    }
 }

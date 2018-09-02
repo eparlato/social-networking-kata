@@ -25,11 +25,13 @@ public class Message {
         long elapsedSeconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
 
         if (elapsedMinutes > 0) {
-            return String.format(" (%d minutes ago)", elapsedMinutes);
+            String minutesString = elapsedMinutes == 1 ? "minute" : "minutes";
+            return String.format(" (%d %s ago)", elapsedMinutes, minutesString);
         }
 
         if (elapsedSeconds > 0) {
-          return String.format(" (%d seconds ago)", elapsedSeconds);
+            String secondsString = elapsedSeconds == 1 ? "second" : "seconds";
+            return String.format(" (%d %s ago)", elapsedSeconds, secondsString);
         }
 
         return "";
