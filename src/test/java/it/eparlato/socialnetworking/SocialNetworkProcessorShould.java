@@ -66,7 +66,6 @@ public class SocialNetworkProcessorShould {
                 will(returnValue(user));
 
                 oneOf(user).read();
-                will(returnValue(new LinkedList<Message>()));
             }
         });
 
