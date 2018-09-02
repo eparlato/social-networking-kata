@@ -1,6 +1,6 @@
 package it.eparlato.socialnetworking.user;
 
-import it.eparlato.socialnetworking.Message;
+import it.eparlato.socialnetworking.message.Message;
 
 import java.util.LinkedList;
 
