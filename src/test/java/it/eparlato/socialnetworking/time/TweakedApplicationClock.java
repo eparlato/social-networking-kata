@@ -16,6 +16,10 @@ public class TweakedApplicationClock implements ApplicationClock {
         return currentTimeMillis;
     }
 
+    public void setCurrentTimeMillis(long currentTimeMillis) {
+        this.currentTimeMillis = currentTimeMillis;
+    }
+
     public TweakedApplicationClock subtractMinutes(int minutes) {
         this.currentTimeMillis -= (minutes * ONE_MINUTE);
         return this;

@@ -52,7 +52,8 @@ public class SocialNetworkingApplicationShould {
 
     @Test
     public void return_the_user_timeline_when_a_user_name_is_typed() throws UnsupportedEncodingException {
-        TweakedApplicationClock applicationClock = new TweakedApplicationClock(System.currentTimeMillis());
+        long now = System.currentTimeMillis();
+        TweakedApplicationClock applicationClock = new TweakedApplicationClock(now);
         SocialNetworkProcessor socialNetworkProcessor = new SocialNetworkProcessor(
                 new ConcreteInputParser(new InMemoryUserRepository(), applicationClock));
 
@@ -60,8 +61,9 @@ public class SocialNetworkingApplicationShould {
         socialNetworkProcessor.process("Bob -> Damn! We lost!");
 
         applicationClock.addMinutes(1);
-        socialNetworkProcessor.process("Bob -> Good game though");
+        socialNetworkProcessor.process("Bob -> Good game though.");
 
+        applicationClock.setCurrentTimeMillis(now);
         socialNetworkProcessor.process("Bob");
 
         String expected =
