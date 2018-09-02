@@ -10,14 +10,8 @@ public class SocialNetworkProcessor {
         this.inputParser = parser;
     }
 
-    public String process(String input) {
-        if ("Alice".equals(input)) {
-            return "User Alice doesn't exist";
-        }
-
+    public void process(String input) {
         Command command = inputParser.parse(input);
         command.execute();
-
-        return "";
     }
 }
