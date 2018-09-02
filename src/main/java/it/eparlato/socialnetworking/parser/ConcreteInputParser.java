@@ -1,6 +1,7 @@
 package it.eparlato.socialnetworking.parser;
 
 import it.eparlato.socialnetworking.command.Command;
+import it.eparlato.socialnetworking.command.Follow;
 import it.eparlato.socialnetworking.command.Publish;
 import it.eparlato.socialnetworking.command.ViewTimeline;
 import it.eparlato.socialnetworking.time.ApplicationClock;
@@ -22,8 +23,16 @@ public class ConcreteInputParser implements InputParser {
             String message = inputSplit[1].trim();
 
             return new Publish(userName, message, userRepository, applicationClock.currentTimeMillis());
-        } else {
-            return new ViewTimeline(input, userRepository, applicationClock.currentTimeMillis());
         }
+
+        if(input.contains("follows")) {
+            String[] inputSplit = input.split("follows");
+            String follower = inputSplit[0].trim();
+            String followed = inputSplit[1].trim();
+
+            return new Follow(follower, followed, userRepository);
+        }
+
+        return new ViewTimeline(input, userRepository, applicationClock.currentTimeMillis());
     }
 }

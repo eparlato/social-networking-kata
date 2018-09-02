@@ -1,6 +1,7 @@
 package it.eparlato.socialnetworking.parser;
 
 import it.eparlato.socialnetworking.command.Command;
+import it.eparlato.socialnetworking.command.Follow;
 import it.eparlato.socialnetworking.command.Publish;
 import it.eparlato.socialnetworking.command.ViewTimeline;
 import it.eparlato.socialnetworking.time.TweakedApplicationClock;
@@ -34,6 +35,14 @@ public class InputParserShould {
     public void return_a_ViewTimeline_command_if_the_is_input_a_user_name() {
         input = "Alice";
         expectedCommand = new ViewTimeline("Alice", new DummyUserRepository(), now);
+
+        assertEquals(expectedCommand, parser.parse(input));
+    }
+
+    @Test
+    public void return_a_Follow_command_if_the_input_contains_the_string_follows() {
+        input = "Alice follows Charlie";
+        expectedCommand = new Follow("Alice", "Charlie", new DummyUserRepository());
 
         assertEquals(expectedCommand, parser.parse(input));
     }

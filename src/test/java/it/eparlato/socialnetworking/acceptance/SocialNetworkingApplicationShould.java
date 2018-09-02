@@ -60,5 +60,36 @@ public class SocialNetworkingApplicationShould {
         assertEquals(expected, canvas.toString("UTF-8"));
     }
 
+    @Test
+    public void let_us_subscribe_to_a_user_timeline_and_view_a_list_of_all_subscriptions() throws UnsupportedEncodingException {
+        long now = System.currentTimeMillis();
+        TweakedApplicationClock applicationClock = new TweakedApplicationClock(now);
+        SocialNetworkProcessor socialNetworkProcessor = new SocialNetworkProcessor(
+                new ConcreteInputParser(new InMemoryUserRepository(), applicationClock));
 
+        applicationClock.subtractMinutes(5);
+        socialNetworkProcessor.process("Alice -> I love the weather today");
+
+        applicationClock.addMinutes(3);
+        socialNetworkProcessor.process("Bob -> Damn! We lost!");
+
+        applicationClock.addMinutes(1);
+        socialNetworkProcessor.process("Bob -> Good game though.");
+
+        applicationClock.setCurrentTimeMillis(now);
+        applicationClock.subtractSeconds(15);
+        socialNetworkProcessor.process("Charlie -> I'm in New York today! Anyone wants to have a coffee?");
+
+        socialNetworkProcessor.process("Charlie follows Alice");
+        socialNetworkProcessor.process("Charlie follows Bob");
+        socialNetworkProcessor.process("Charlie wall");
+
+        String expected =
+                "Charlie - I'm in New York today! Anyone wants to have a coffee? (15 seconds ago)" + System.getProperty("line.separator") +
+                 "Bob - Good game though. (1 minutes ago)" + System.getProperty("line.separator") +
+                 "Bob - Damn! We lost! (2 minute ago)" + System.getProperty("line.separator") +
+                 " Alice - I love the weather today (5 minutes ago)" + System.getProperty("line.separator");
+
+        assertEquals(expected, canvas.toString("UTF-8"));
+    }
 }

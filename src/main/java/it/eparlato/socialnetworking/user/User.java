@@ -9,4 +9,6 @@ public interface User {
     void publish(String message, long timeOfPublishing);
 
     List<Message> getTimeline();
+
+    void follow(User user);
 }

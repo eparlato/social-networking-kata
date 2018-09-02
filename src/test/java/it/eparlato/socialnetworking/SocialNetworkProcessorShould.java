@@ -1,9 +1,11 @@
 package it.eparlato.socialnetworking;
 
 import it.eparlato.socialnetworking.command.Command;
+import it.eparlato.socialnetworking.command.Follow;
 import it.eparlato.socialnetworking.command.ViewTimeline;
 import it.eparlato.socialnetworking.parser.InputParser;
 import it.eparlato.socialnetworking.command.Publish;
+import it.eparlato.socialnetworking.user.ConcreteUser;
 import it.eparlato.socialnetworking.user.User;
 import it.eparlato.socialnetworking.user.repository.UserRepository;
 import org.jmock.Expectations;
@@ -70,5 +72,28 @@ public class SocialNetworkProcessorShould {
         socialNetworkProcessor.process(input);
     }
 
+    @Test
+    public void execute_a_Follow_command_if_the_input_contains_the_string_follows() {
+        final String input = "Bob follows Alice";
 
+        final Command follow = new Follow("Bob", "Alice", userRepository);
+        final User userAlice = new ConcreteUser("Alice");
+
+        context.checking(new Expectations() {
+            {
+                oneOf(parser).parse(input);
+                will(returnValue(follow));
+
+                oneOf(userRepository).getUser("Bob");
+                will(returnValue(user));
+
+                allowing(userRepository).getUser("Alice");
+                will(returnValue(userAlice));
+
+                oneOf(user).follow(userAlice);
+            }
+        });
+
+        socialNetworkProcessor.process(input);
+    }
 }
