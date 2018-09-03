@@ -54,4 +54,25 @@ public class UserShould {
         assertEquals(bob, followedUsers.get(0));
         assertEquals(alice, followedUsers.get(1));
     }
+
+    @Test
+    public void return_a_list_of_messages_of_followed_users_after_his_timeline() {
+        User alice = new ConcreteUser("Alice");
+        User bob = new ConcreteUser("Bob");
+        User charlie = new ConcreteUser("Charlie");
+
+        alice.publish("It's raining today.", System.currentTimeMillis());
+        bob.publish("I wish I got my umbrella", System.currentTimeMillis());
+        bob.publish("Tomorrow will be sunny I hope", System.currentTimeMillis());
+        charlie.publish("Someone want to buy an umbrella?", System.currentTimeMillis());
+        charlie.follow(bob);
+        charlie.follow(alice);
+
+        List<Message> messages = charlie.wall();
+
+        assertEquals("Someone want to buy an umbrella?", messages.get(0).getText());
+        assertEquals("It's raining today.", messages.get(1).getText());
+        assertEquals("Tomorrow will be sunny I hope", messages.get(2).getText());
+        assertEquals("I wish I got my umbrella", messages.get(3).getText());
+    }
 }

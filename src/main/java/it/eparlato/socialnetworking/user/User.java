@@ -14,5 +14,5 @@ public interface User {
 
     List<User> getFollowedUsers();
 
-    void wall();
+    List<Message> wall();
 }

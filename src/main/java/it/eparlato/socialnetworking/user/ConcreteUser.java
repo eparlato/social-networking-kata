@@ -35,8 +35,16 @@ public class ConcreteUser implements User {
     }
 
     @Override
-    public void wall() {
+    public List<Message> wall() {
+        List<Message> wallMessages = new ArrayList<Message>();
 
+        wallMessages.addAll(messages);
+
+        for (User user : followedUsers) {
+            wallMessages.addAll(user.getTimeline());
+        }
+
+        return wallMessages;
     }
 
     @Override
