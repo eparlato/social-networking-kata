@@ -71,25 +71,28 @@ public class SocialNetworkingApplicationShould {
         applicationClock.subtractMinutes(5);
         socialNetworkProcessor.process("Alice -> I love the weather today");
 
-        applicationClock.addMinutes(3);
+        applicationClock.setCurrentTimeMillis(now);
+        applicationClock.subtractMinutes(2);
         socialNetworkProcessor.process("Bob -> Damn! We lost!");
 
-        applicationClock.addMinutes(1);
+        applicationClock.setCurrentTimeMillis(now);
+        applicationClock.subtractMinutes(1);
         socialNetworkProcessor.process("Bob -> Good game though.");
 
         applicationClock.setCurrentTimeMillis(now);
         applicationClock.subtractSeconds(15);
         socialNetworkProcessor.process("Charlie -> I'm in New York today! Anyone wants to have a coffee?");
 
+        applicationClock.setCurrentTimeMillis(now);
         socialNetworkProcessor.process("Charlie follows Alice");
         socialNetworkProcessor.process("Charlie follows Bob");
         socialNetworkProcessor.process("Charlie wall");
 
         String expected =
                 "Charlie - I'm in New York today! Anyone wants to have a coffee? (15 seconds ago)" + System.getProperty("line.separator") +
-                 "Bob - Good game though. (1 minutes ago)" + System.getProperty("line.separator") +
-                 "Bob - Damn! We lost! (2 minute ago)" + System.getProperty("line.separator") +
-                 " Alice - I love the weather today (5 minutes ago)" + System.getProperty("line.separator");
+                 "Bob - Good game though. (1 minute ago)" + System.getProperty("line.separator") +
+                 "Bob - Damn! We lost! (2 minutes ago)" + System.getProperty("line.separator") +
+                 "Alice - I love the weather today (5 minutes ago)" + System.getProperty("line.separator");
 
         assertEquals(expected, canvas.toString("UTF-8"));
     }

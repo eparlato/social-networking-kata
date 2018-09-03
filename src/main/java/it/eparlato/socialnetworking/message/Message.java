@@ -46,4 +46,8 @@ public class Message {
     public String formatForWallStartingFrom(long timeOfWall) {
         return username + " - " + formatForViewTimelineStartingFrom(timeOfWall);
     }
+
+    public void showWallOnConsoleStartingFrom(long timeOfWall) {
+        System.out.println(formatForWallStartingFrom(timeOfWall));
+    }
 }

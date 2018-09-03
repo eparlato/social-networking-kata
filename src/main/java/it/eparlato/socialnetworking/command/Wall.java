@@ -1,7 +1,10 @@
 package it.eparlato.socialnetworking.command;
 
+import it.eparlato.socialnetworking.message.Message;
 import it.eparlato.socialnetworking.user.User;
 import it.eparlato.socialnetworking.user.repository.UserRepository;
+
+import java.util.List;
 
 public class Wall implements Command {
     private final String username;
@@ -17,7 +20,11 @@ public class Wall implements Command {
     @Override
     public void execute() {
         User user = userRepository.getUser(username);
-        user.wall();
+        List<Message> messages = user.wall();
+
+        for (Message message : messages) {
+            message.showWallOnConsoleStartingFrom(timeOfWall);
+        }
     }
 
     @Override
