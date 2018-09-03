@@ -16,7 +16,7 @@ public class ConcreteUser implements User {
     }
 
     public void publish(String message, long timeOfPublishing) {
-        messages.push(new Message(message, timeOfPublishing));
+        messages.push(new Message(message, timeOfPublishing, userName));
     }
 
     @Override
