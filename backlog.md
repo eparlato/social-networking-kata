@@ -45,12 +45,18 @@
 
 * check the project, make sure every method has a single level of abstraction
 
+* refactor the ConcreteInputParser
+
+* inject a InputWrapper and a OutputWrapper into the application, instead of system.in and System.out?
+  * Should the message receive an OutputWrapper in the constructor?
+
 * do my tests test behaviours? Looks like they test classes, they should be named/structured to test behaviours
 
 * add to README
   * required java 1.6+
   * how to launch tests with maven -> be sure you have sourcefire plugin configured
-  * how to create and launch the application from the jar -> pom must be configured first
+  * how to create and launch the application from console -> remove unused pom configuration for jar
+  * mvn exec:java -Dexec.mainClass=it.eparlato.socialnetworking.SocialNetworkingApp
   
 * next time try a different mocking framework, such as Mockito. With jmock it was hard to test certain conditions, such as 
 test that all Message objects in a List call a method. 
