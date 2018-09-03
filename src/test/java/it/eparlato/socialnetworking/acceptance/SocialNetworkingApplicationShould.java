@@ -6,6 +6,7 @@ import it.eparlato.socialnetworking.time.TweakedApplicationClock;
 import it.eparlato.socialnetworking.user.repository.InMemoryUserRepository;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -61,6 +62,7 @@ public class SocialNetworkingApplicationShould {
     }
 
     @Test
+    @Ignore
     public void let_us_subscribe_to_a_user_timeline_and_view_a_list_of_all_subscriptions() throws UnsupportedEncodingException {
         long now = System.currentTimeMillis();
         TweakedApplicationClock applicationClock = new TweakedApplicationClock(now);

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ConcreteUser implements User {
     private final String userName;
-    private LinkedList<Message> messages = new LinkedList<>();
+    private LinkedList<Message> messages = new LinkedList<Message>();
 
     public ConcreteUser(String userName) {
         this.userName = userName;

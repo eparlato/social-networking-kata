@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class InMemoryUserRepository implements UserRepository {
 
-    Map<String, User> repository = new HashMap<>();
+    Map<String, User> repository = new HashMap<String, User>();
 
     public User getUser(String username) {
         User user =  findUserInRepository(username);

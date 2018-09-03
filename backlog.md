@@ -43,7 +43,11 @@
 
 ## TODO
 
-* finish the first test inSocialNetworkProcessorTest
-* test drive the implementation of all the collaborators, in order to have a working system that can store user messages
-into a timeline
-  * what will the timeline be? List, stack...
+* check the project, make sure every method has a single level of abstraction
+
+* do my tests test behaviours? Looks like they test classes, they should be named/structured to test behaviours
+
+* add to README
+  * required java 1.6+
+  * how to launch tests with maven -> be sure you have sourcefire plugin configured
+  * how to create and launch the application from the jar -> pom must be configured first
