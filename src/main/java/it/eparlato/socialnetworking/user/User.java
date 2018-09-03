@@ -11,4 +11,6 @@ public interface User {
     List<Message> getTimeline();
 
     void follow(User user);
+
+    List<User> getFollowedUsers();
 }

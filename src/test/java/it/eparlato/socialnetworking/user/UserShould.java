@@ -2,6 +2,8 @@ package it.eparlato.socialnetworking.user;
 
 import it.eparlato.socialnetworking.message.Message;
 import org.junit.Test;
+
+import java.util.Hashtable;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
@@ -35,5 +37,21 @@ public class UserShould {
         assertEquals(thirdMessage, messages.get(0).getText());
         assertEquals(secondMessage, messages.get(1).getText());
         assertEquals(firstMessage, messages.get(2).getText());
+    }
+
+    @Test
+    public void add_a_user_on_top_of_his_followed_list_when_it_follows_a_user() {
+        User bob = new ConcreteUser("Bob");;
+        User alice = new ConcreteUser("Alice");
+
+        User charlie = new ConcreteUser("Charlie");
+
+        charlie.follow(alice);
+        charlie.follow(bob);
+
+        List<User> followedUsers = charlie.getFollowedUsers();
+
+        assertEquals(bob, followedUsers.get(0));
+        assertEquals(alice, followedUsers.get(1));
     }
 }

@@ -2,12 +2,14 @@ package it.eparlato.socialnetworking.user;
 
 import it.eparlato.socialnetworking.message.Message;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class ConcreteUser implements User {
     private final String userName;
     private LinkedList<Message> messages = new LinkedList<Message>();
+    private LinkedList<User> followedUsers = new LinkedList<User>();
 
     public ConcreteUser(String userName) {
         this.userName = userName;
@@ -24,7 +26,12 @@ public class ConcreteUser implements User {
 
     @Override
     public void follow(User user) {
+        followedUsers.push(user);
+    }
 
+    @Override
+    public List<User> getFollowedUsers() {
+        return followedUsers;
     }
 
     @Override
