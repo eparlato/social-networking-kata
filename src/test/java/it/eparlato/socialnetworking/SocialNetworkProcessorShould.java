@@ -1,10 +1,7 @@
 package it.eparlato.socialnetworking;
 
-import it.eparlato.socialnetworking.command.Command;
-import it.eparlato.socialnetworking.command.Follow;
-import it.eparlato.socialnetworking.command.ViewTimeline;
+import it.eparlato.socialnetworking.command.*;
 import it.eparlato.socialnetworking.parser.InputParser;
-import it.eparlato.socialnetworking.command.Publish;
 import it.eparlato.socialnetworking.user.ConcreteUser;
 import it.eparlato.socialnetworking.user.User;
 import it.eparlato.socialnetworking.user.repository.UserRepository;
@@ -15,7 +12,7 @@ import org.junit.Test;
 
 
 public class SocialNetworkProcessorShould {
-    public static final int IRRELEVANT_TIME_OF_PUBLISHING = 0;
+    public static final int IRRELEVANT_TIME = 0;
 
     @Rule
     public final JUnitRuleMockery context = new JUnitRuleMockery();
@@ -32,7 +29,7 @@ public class SocialNetworkProcessorShould {
 
         final Command post = new Publish("Alice",
                 message,
-                userRepository, IRRELEVANT_TIME_OF_PUBLISHING);
+                userRepository, IRRELEVANT_TIME);
 
         context.checking(new Expectations() {
             {
@@ -42,7 +39,7 @@ public class SocialNetworkProcessorShould {
                 oneOf(userRepository).getUser("Alice");
                 will(returnValue(user));
 
-                oneOf(user).publish(message, IRRELEVANT_TIME_OF_PUBLISHING);
+                oneOf(user).publish(message, IRRELEVANT_TIME);
             }
         });
 
@@ -55,7 +52,7 @@ public class SocialNetworkProcessorShould {
 
         final Command viewTimeline = new ViewTimeline("Charlie",
                 userRepository,
-                IRRELEVANT_TIME_OF_PUBLISHING);
+                IRRELEVANT_TIME);
 
         context.checking(new Expectations() {
             {
@@ -91,6 +88,27 @@ public class SocialNetworkProcessorShould {
                 will(returnValue(userAlice));
 
                 oneOf(user).follow(userAlice);
+            }
+        });
+
+        socialNetworkProcessor.process(input);
+    }
+
+    @Test
+    public void execute_a_Wall_command_if_the_input_contains_the_string_wall() {
+        final String input = "Alice wall";
+
+        final Command wall = new Wall("Alice", userRepository, IRRELEVANT_TIME);
+
+        context.checking(new Expectations(){
+            {
+                oneOf(parser).parse(input);
+                will(returnValue(wall));
+
+                oneOf(userRepository).getUser("Alice");
+                will(returnValue(user));
+
+                oneOf(user).wall();
             }
         });
 

@@ -35,6 +35,11 @@ public class ConcreteUser implements User {
     }
 
     @Override
+    public void wall() {
+
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if(!(obj instanceof ConcreteUser)) {
             return false;

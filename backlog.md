@@ -51,3 +51,6 @@
   * required java 1.6+
   * how to launch tests with maven -> be sure you have sourcefire plugin configured
   * how to create and launch the application from the jar -> pom must be configured first
+  
+* next time try a different mocking framework, such as Mockito. With jmock it was hard to test certain conditions, such as 
+test that all Message objects in a List call a method. 

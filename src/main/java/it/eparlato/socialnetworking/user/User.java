@@ -13,4 +13,6 @@ public interface User {
     void follow(User user);
 
     List<User> getFollowedUsers();
+
+    void wall();
 }
