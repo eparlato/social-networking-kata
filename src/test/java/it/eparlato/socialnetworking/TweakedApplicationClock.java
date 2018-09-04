@@ -5,10 +5,12 @@ import it.eparlato.socialnetworking.time.ApplicationClock;
 public class TweakedApplicationClock implements ApplicationClock {
     private final long ONE_SECOND = 1000;
     private final long ONE_MINUTE = 60 * 1000;
+    private final long startingTime;
 
     private long currentTimeMillis;
 
     public TweakedApplicationClock(long now) {
+        this.startingTime = now;
         this.currentTimeMillis = now;
     }
 
@@ -39,5 +41,15 @@ public class TweakedApplicationClock implements ApplicationClock {
     public TweakedApplicationClock addSeconds(int seconds) {
         this.currentTimeMillis += (seconds * ONE_SECOND);
         return this;
+    }
+
+    public void resetAndSubtractMinutes(int minutes) {
+        setCurrentTimeMillis(startingTime);
+        subtractMinutes(minutes);
+    }
+
+    public void resetAndSubtractSeconds(int seconds) {
+        setCurrentTimeMillis(startingTime);
+        subtractSeconds(seconds);
     }
 }
