@@ -1,7 +1,7 @@
 package it.eparlato.socialnetworking;
 
 import it.eparlato.socialnetworking.command.*;
-import it.eparlato.socialnetworking.user.ConcreteUser;
+import it.eparlato.socialnetworking.user.InMemoryUser;
 import it.eparlato.socialnetworking.user.User;
 import org.jmock.Expectations;
 import org.jmock.integration.junit4.JUnitRuleMockery;
@@ -44,7 +44,7 @@ public class CommandExecuting {
 
     @Test
     public void user_should_execute_follow_if_the_command_is_Follow() {
-        final User followedUser = new ConcreteUser("Bob");
+        final User followedUser = new InMemoryUser("Bob");
 
         Command follow = new Follow(user, followedUser);
 

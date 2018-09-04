@@ -1,6 +1,6 @@
 package it.eparlato.socialnetworking;
 
-import it.eparlato.socialnetworking.user.ConcreteUser;
+import it.eparlato.socialnetworking.user.InMemoryUser;
 import it.eparlato.socialnetworking.user.User;
 import it.eparlato.socialnetworking.user.repository.InMemoryUserRepository;
 import it.eparlato.socialnetworking.user.repository.UserRepository;
@@ -11,7 +11,7 @@ import static junit.framework.TestCase.assertEquals;
 public class GettingUserFromRepository {
     @Test
     public void a_user_repository_should_return_a_new_user_if_it_is_not_already_in_the_repository() {
-        User userAlice = new ConcreteUser("Alice");
+        User userAlice = new InMemoryUser("Alice");
         UserRepository repository = new InMemoryUserRepository();
 
         assertEquals(null, repository.findUserInRepository("Alice"));

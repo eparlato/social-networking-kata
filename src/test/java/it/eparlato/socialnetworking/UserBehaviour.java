@@ -1,7 +1,7 @@
 package it.eparlato.socialnetworking;
 
 import it.eparlato.socialnetworking.message.Message;
-import it.eparlato.socialnetworking.user.ConcreteUser;
+import it.eparlato.socialnetworking.user.InMemoryUser;
 import it.eparlato.socialnetworking.user.User;
 import org.junit.Test;
 import java.util.List;
@@ -13,7 +13,7 @@ public class UserBehaviour {
 
     @Test
     public void a_user_should_store_a_message_when_it_is_published() {
-        User user = new ConcreteUser("Bob");
+        User user = new InMemoryUser("Bob");
 
         user.publish("Damn! We lost!", ANY_TIME_VALUE);
         user.publish("Good game though.", ANY_TIME_VALUE);
@@ -28,7 +28,7 @@ public class UserBehaviour {
         String secondMessage = "Yesterday it was raining.";
         String thirdMessage = "What about tomorrow?";
 
-        User user = new ConcreteUser("Alice");
+        User user = new InMemoryUser("Alice");
 
         user.publish(firstMessage, ANY_TIME_VALUE);
         user.publish(secondMessage, ANY_TIME_VALUE);
@@ -43,10 +43,10 @@ public class UserBehaviour {
 
     @Test
     public void a_user_should_add_a_user_on_top_of_his_followed_list_when_it_follows_a_user() {
-        User bob = new ConcreteUser("Bob");;
-        User alice = new ConcreteUser("Alice");
+        User bob = new InMemoryUser("Bob");;
+        User alice = new InMemoryUser("Alice");
 
-        User charlie = new ConcreteUser("Charlie");
+        User charlie = new InMemoryUser("Charlie");
 
         charlie.follow(alice);
         charlie.follow(bob);
@@ -59,9 +59,9 @@ public class UserBehaviour {
 
     @Test
     public void a_user_should_return_a_list_of_messages_of_followed_users_after_his_timeline() {
-        User alice = new ConcreteUser("Alice");
-        User bob = new ConcreteUser("Bob");
-        User charlie = new ConcreteUser("Charlie");
+        User alice = new InMemoryUser("Alice");
+        User bob = new InMemoryUser("Bob");
+        User charlie = new InMemoryUser("Charlie");
 
         alice.publish("It's raining today.", ANY_TIME_VALUE);
         bob.publish("I wish I got my umbrella", ANY_TIME_VALUE);

@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ConcreteUser implements User {
+public class InMemoryUser implements User {
     private final String username;
     private LinkedList<Message> messages = new LinkedList<Message>();
     private LinkedList<User> followedUsers = new LinkedList<User>();
 
-    public ConcreteUser(String username) {
+    public InMemoryUser(String username) {
         this.username = username;
     }
 
@@ -49,11 +49,11 @@ public class ConcreteUser implements User {
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof ConcreteUser)) {
+        if(!(obj instanceof InMemoryUser)) {
             return false;
         }
 
-        ConcreteUser that = (ConcreteUser) obj;
+        InMemoryUser that = (InMemoryUser) obj;
 
         return this.username.equals(that.username);
     }
