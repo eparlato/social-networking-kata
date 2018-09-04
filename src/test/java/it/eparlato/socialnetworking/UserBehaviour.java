@@ -9,13 +9,15 @@ import java.util.List;
 import static junit.framework.TestCase.assertEquals;
 
 public class UserBehaviour {
+    final long ANY_TIME_VALUE = 0;
+
     @Test
     public void a_user_should_store_a_message_when_it_is_published() {
         User user = new ConcreteUser("Bob");
 
-        user.publish("Damn! We lost!", System.currentTimeMillis());
-        user.publish("Good game though.", System.currentTimeMillis());
-        user.publish("Next time we will win!", System.currentTimeMillis());
+        user.publish("Damn! We lost!", ANY_TIME_VALUE);
+        user.publish("Good game though.", ANY_TIME_VALUE);
+        user.publish("Next time we will win!", ANY_TIME_VALUE);
 
         assertEquals(3, user.getTimeline().size());
     }
@@ -28,9 +30,9 @@ public class UserBehaviour {
 
         User user = new ConcreteUser("Alice");
 
-        user.publish(firstMessage, System.currentTimeMillis());
-        user.publish(secondMessage, System.currentTimeMillis());
-        user.publish(thirdMessage, System.currentTimeMillis());
+        user.publish(firstMessage, ANY_TIME_VALUE);
+        user.publish(secondMessage, ANY_TIME_VALUE);
+        user.publish(thirdMessage, ANY_TIME_VALUE);
 
         List<Message> messages = user.getTimeline();
 
@@ -61,10 +63,10 @@ public class UserBehaviour {
         User bob = new ConcreteUser("Bob");
         User charlie = new ConcreteUser("Charlie");
 
-        alice.publish("It's raining today.", System.currentTimeMillis());
-        bob.publish("I wish I got my umbrella", System.currentTimeMillis());
-        bob.publish("Tomorrow will be sunny I hope", System.currentTimeMillis());
-        charlie.publish("Someone want to buy an umbrella?", System.currentTimeMillis());
+        alice.publish("It's raining today.", ANY_TIME_VALUE);
+        bob.publish("I wish I got my umbrella", ANY_TIME_VALUE);
+        bob.publish("Tomorrow will be sunny I hope", ANY_TIME_VALUE);
+        charlie.publish("Someone want to buy an umbrella?", ANY_TIME_VALUE);
         charlie.follow(bob);
         charlie.follow(alice);
 

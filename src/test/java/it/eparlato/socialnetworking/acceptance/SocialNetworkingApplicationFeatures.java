@@ -15,6 +15,7 @@ import java.io.UnsupportedEncodingException;
 import static junit.framework.TestCase.assertEquals;
 
 public class SocialNetworkingApplicationFeatures {
+    final String LINE_SEPARATOR = System.getProperty("line.separator");
     ByteArrayOutputStream canvas = new ByteArrayOutputStream();
     PrintStream originalSystemOut = System.out;
     PrintStream hijackedSystemOut = new PrintStream(canvas);
@@ -56,9 +57,9 @@ public class SocialNetworkingApplicationFeatures {
         socialNetworkProcessor.process("Bob");
 
         String expected =
-                "I love the weather today (5 minutes ago)" + System.getProperty("line.separator") +
-                "Good game though. (1 minute ago)" + System.getProperty("line.separator") +
-                        "Damn! We lost! (2 minutes ago)" + System.getProperty("line.separator");
+                "I love the weather today (5 minutes ago)" + LINE_SEPARATOR +
+                "Good game though. (1 minute ago)" + LINE_SEPARATOR +
+                        "Damn! We lost! (2 minutes ago)" + LINE_SEPARATOR;
 
         assertEquals(expected, canvas.toString("UTF-8"));
     }
@@ -86,10 +87,10 @@ public class SocialNetworkingApplicationFeatures {
         socialNetworkProcessor.process("Charlie wall");
 
         String expected =
-                "Charlie - I'm in New York today! Anyone wants to have a coffee? (15 seconds ago)" + System.getProperty("line.separator") +
-                 "Bob - Good game though. (1 minute ago)" + System.getProperty("line.separator") +
-                 "Bob - Damn! We lost! (2 minutes ago)" + System.getProperty("line.separator") +
-                 "Alice - I love the weather today (5 minutes ago)" + System.getProperty("line.separator");
+                "Charlie - I'm in New York today! Anyone wants to have a coffee? (15 seconds ago)" + LINE_SEPARATOR +
+                 "Bob - Good game though. (1 minute ago)" + LINE_SEPARATOR +
+                 "Bob - Damn! We lost! (2 minutes ago)" + LINE_SEPARATOR +
+                 "Alice - I love the weather today (5 minutes ago)" + LINE_SEPARATOR;
 
         assertEquals(expected, canvas.toString("UTF-8"));
     }
