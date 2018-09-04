@@ -51,3 +51,32 @@ Implement a console-based social networking application (similar to Twitter) sat
 **IMPORTANT:**  Implement the requirements focusing on **writing the best code** you can produce.
 
 **CODE SUBMISSION:** Add the code to your own Github account and send us the link.
+
+## Instructions
+
+### Requirements
+
+  * Java 1.6+
+  * Apache Maven (tested with version 3.3.9)
+  
+### How to build the project
+
+From the project root dir launch on the console the command
+
+    mvn clean install
+    
+### How to run the tests
+
+From the project root dir launch the command
+
+    mvn test
+    
+### How to run the application
+
+From the project root dir launch the command
+
+    mvn exec:java -Dexec.mainClass=it.eparlato.socialnetworking.SocialNetworkingApp
+    
+Otherwise, go to /target and launch the command
+
+    java -jar social-networking-kata-1.0.jar 
