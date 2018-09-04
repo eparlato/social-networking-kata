@@ -18,6 +18,10 @@ public class ViewTimeline implements Command {
     public void execute() {
         List<Message> messages = user.getTimeline();
 
+        showMessages(messages);
+    }
+
+    private void showMessages(List<Message> messages) {
         for (Message message : messages) {
             message.showTimelineOnConsoleStartingFrom(timeOfReading);
         }

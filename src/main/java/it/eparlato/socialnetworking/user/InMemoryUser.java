@@ -40,11 +40,15 @@ public class InMemoryUser implements User {
 
         wallMessages.addAll(messages);
 
+        addFollowedUsersMessagesToWall(followedUsers, wallMessages);
+
+        return wallMessages;
+    }
+
+    private void addFollowedUsersMessagesToWall(List<User> followedUsers, List<Message> wallMessages) {
         for (User user : followedUsers) {
             wallMessages.addAll(user.getTimeline());
         }
-
-        return wallMessages;
     }
 
     @Override

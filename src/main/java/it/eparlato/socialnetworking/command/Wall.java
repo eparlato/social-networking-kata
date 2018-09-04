@@ -18,6 +18,10 @@ public class Wall implements Command {
     public void execute() {
         List<Message> messages = user.wall();
 
+        showMessages(messages);
+    }
+
+    private void showMessages(List<Message> messages) {
         for (Message message : messages) {
             message.showWallOnConsoleStartingFrom(timeOfWall);
         }

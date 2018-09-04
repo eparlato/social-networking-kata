@@ -14,24 +14,27 @@ public class ConcreteInputParser implements InputParser {
     }
 
     public Command parse(String input) {
+        // TODO: find a working regular expression, then refactor the whole class
+        String username;
+
         if (input.contains("->")) {
             String[] inputSplit = input.split("->");
-            String userName = inputSplit[0].trim();
+            username = inputSplit[0].trim();
             String message = inputSplit[1].trim();
 
-            return new Publish(userRepository.getUser(userName), message, applicationClock.currentTimeMillis());
+            return new Publish(userRepository.getUser(username), message, applicationClock.currentTimeMillis());
         }
 
         if(input.contains("follows")) {
             String[] inputSplit = input.split("follows");
-            String follower = inputSplit[0].trim();
+            username = inputSplit[0].trim();
             String followed = inputSplit[1].trim();
 
-            return new Follow(userRepository.getUser(follower), userRepository.getUser(followed));
+            return new Follow(userRepository.getUser(username), userRepository.getUser(followed));
         }
 
         if(input.contains("wall")) {
-            String username = input.split("wall")[0].trim();
+            username = input.split("wall")[0].trim();
 
             return new Wall(userRepository.getUser(username), applicationClock.currentTimeMillis());
         }
