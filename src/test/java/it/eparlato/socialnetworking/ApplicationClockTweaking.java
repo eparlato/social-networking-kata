@@ -43,15 +43,6 @@ public class ApplicationClockTweaking {
     }
 
     @Test
-    public void a_tweaked_clock_should_be_able_to_add_minutes_and_seconds_to_current_time() {
-        long oneMinutesThirtySecondsAgo = now - (1 * ONE_MINUTE) - (30 * ONE_SECOND);
-
-        applicationClock.subtractMinutes(3).addMinutes(1).addSeconds(30);
-
-        assertEquals(oneMinutesThirtySecondsAgo, applicationClock.currentTimeMillis());
-    }
-
-    @Test
     public void a_tweaked_clock_should_be_able_to_override_existing_time() {
         applicationClock.subtractMinutes(5);
 

@@ -33,16 +33,6 @@ public class TweakedApplicationClock implements ApplicationClock {
         return this;
     }
 
-    public TweakedApplicationClock addMinutes(int minutes) {
-        this.currentTimeMillis += (minutes * ONE_MINUTE);
-        return this;
-    }
-
-    public TweakedApplicationClock addSeconds(int seconds) {
-        this.currentTimeMillis += (seconds * ONE_SECOND);
-        return this;
-    }
-
     public void resetAndSubtractMinutes(int minutes) {
         setCurrentTimeMillis(startingTime);
         subtractMinutes(minutes);
