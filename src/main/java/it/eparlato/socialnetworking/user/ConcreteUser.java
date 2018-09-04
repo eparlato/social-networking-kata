@@ -7,16 +7,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ConcreteUser implements User {
-    private final String userName;
+    private final String username;
     private LinkedList<Message> messages = new LinkedList<Message>();
     private LinkedList<User> followedUsers = new LinkedList<User>();
 
-    public ConcreteUser(String userName) {
-        this.userName = userName;
+    public ConcreteUser(String username) {
+        this.username = username;
     }
 
     public void publish(String message, long timeOfPublishing) {
-        messages.push(new Message(message, timeOfPublishing, userName));
+        messages.push(new Message(message, timeOfPublishing, username));
     }
 
     @Override
@@ -55,6 +55,6 @@ public class ConcreteUser implements User {
 
         ConcreteUser that = (ConcreteUser) obj;
 
-        return this.userName.equals(that.userName);
+        return this.username.equals(that.username);
     }
 }

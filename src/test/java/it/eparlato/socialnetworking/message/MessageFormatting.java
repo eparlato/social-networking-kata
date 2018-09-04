@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class MessageShould {
+public class MessageFormatting {
     private static final String UNKNOWN_USER = "unknown";
     long now;
     Message message;
@@ -17,7 +17,7 @@ public class MessageShould {
     }
 
     @Test
-    public void write_that_a_message_is_15_seconds_old_if_timeline_is_required() {
+    public void a_message_should_write_how_many_seconds_is_old() {
         long fifteenSecondsAgo = new TweakedApplicationClock(now).subtractSeconds(15).currentTimeMillis();
 
         message = new Message("I'm in New York today! Anyone wants to have a coffee?", fifteenSecondsAgo, UNKNOWN_USER);
@@ -27,7 +27,7 @@ public class MessageShould {
     }
 
     @Test
-    public void write_that_a_message_is_3_minutes_old_if_timeline_is_required() {
+    public void a_message_should_write_how_many_minutes_is_old() {
         long threeMinutesAgo = new TweakedApplicationClock(now).subtractMinutes(3).currentTimeMillis();
 
         message = new Message("I want a cup of coffee", threeMinutesAgo, UNKNOWN_USER);
@@ -36,7 +36,7 @@ public class MessageShould {
     }
 
     @Test
-    public void write_a_singular_minute_message_if_the_message_is_one_minute_old() {
+    public void a_message_should_write_minute_if_it_is_one_minute_old() {
         long oneMinuteAgo = new TweakedApplicationClock(now).subtractMinutes(1).currentTimeMillis();
 
         message = new Message("I want a cup of tea", oneMinuteAgo, UNKNOWN_USER);
@@ -45,7 +45,7 @@ public class MessageShould {
     }
 
     @Test
-    public void write_a_singular_second_message_if_the_message_is_one_second_old() {
+    public void a_message_should_write_second_if_it_is_one_second_old() {
         long oneSecondAgo = new TweakedApplicationClock(now).subtractSeconds(1).currentTimeMillis();
 
         message = new Message("I feel good", oneSecondAgo, UNKNOWN_USER);
@@ -54,7 +54,7 @@ public class MessageShould {
     }
 
     @Test
-    public void write_the_username_followed_by_the_message_if_wall_format_is_called() {
+    public void a_message_should_write_the_username_followed_by_the_text_and_the_time_elapsed_if_wall_format_is_called() {
         long sixMinutesAgo = new TweakedApplicationClock(now).subtractMinutes(6).currentTimeMillis();
 
         message = new Message("I feel like a coffee...", sixMinutesAgo, "Alice");

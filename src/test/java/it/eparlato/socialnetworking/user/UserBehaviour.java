@@ -6,9 +6,9 @@ import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class UserShould {
+public class UserBehaviour {
     @Test
-    public void store_a_message_when_it_is_published() {
+    public void a_user_should_store_a_message_when_it_is_published() {
         User user = new ConcreteUser("Bob");
 
         user.publish("Damn! We lost!", System.currentTimeMillis());
@@ -19,7 +19,7 @@ public class UserShould {
     }
 
     @Test
-    public void return_a_LIFO_list_of_messages_when_the_timeline_is_requested() {
+    public void a_user_should_return_a_LIFO_list_of_messages_when_the_timeline_is_requested() {
         String firstMessage = "Today it is raining.";
         String secondMessage = "Yesterday it was raining.";
         String thirdMessage = "What about tomorrow?";
@@ -38,7 +38,7 @@ public class UserShould {
     }
 
     @Test
-    public void add_a_user_on_top_of_his_followed_list_when_it_follows_a_user() {
+    public void a_user_should_add_a_user_on_top_of_his_followed_list_when_it_follows_a_user() {
         User bob = new ConcreteUser("Bob");;
         User alice = new ConcreteUser("Alice");
 
@@ -54,7 +54,7 @@ public class UserShould {
     }
 
     @Test
-    public void return_a_list_of_messages_of_followed_users_after_his_timeline() {
+    public void a_user_should_return_a_list_of_messages_of_followed_users_after_his_timeline() {
         User alice = new ConcreteUser("Alice");
         User bob = new ConcreteUser("Bob");
         User charlie = new ConcreteUser("Charlie");

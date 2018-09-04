@@ -6,9 +6,9 @@ import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class UserRepositoryShould {
+public class GettingUserFromRepository {
     @Test
-    public void return_a_new_user_if_it_is_not_already_in_the_repository() {
+    public void a_user_repository_should_return_a_new_user_if_it_is_not_already_in_the_repository() {
         User userAlice = new ConcreteUser("Alice");
         UserRepository repository = new InMemoryUserRepository();
 
@@ -17,7 +17,7 @@ public class UserRepositoryShould {
     }
 
     @Test
-    public void return_an_existing_user() {
+    public void a_user_repository_should_return_an_existing_user() {
         UserRepository repository = new InMemoryUserRepository();
 
         User userAlice = repository.getUser("Alice");

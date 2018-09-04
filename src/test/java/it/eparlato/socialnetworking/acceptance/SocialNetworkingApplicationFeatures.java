@@ -6,7 +6,6 @@ import it.eparlato.socialnetworking.time.TweakedApplicationClock;
 import it.eparlato.socialnetworking.user.repository.InMemoryUserRepository;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -15,7 +14,7 @@ import java.io.UnsupportedEncodingException;
 
 import static junit.framework.TestCase.assertEquals;
 
-public class SocialNetworkingApplicationShould {
+public class SocialNetworkingApplicationFeatures {
     ByteArrayOutputStream canvas = new ByteArrayOutputStream();
     PrintStream originalSystemOut = System.out;
     PrintStream hijackedSystemOut = new PrintStream(canvas);
@@ -34,7 +33,7 @@ public class SocialNetworkingApplicationShould {
     }
 
     @Test
-    public void show_the_user_timeline_when_the_user_name_is_typed() throws UnsupportedEncodingException {
+    public void shows_the_user_timeline_when_the_user_name_is_typed() throws UnsupportedEncodingException {
         long now = System.currentTimeMillis();
         TweakedApplicationClock applicationClock = new TweakedApplicationClock(now);
         SocialNetworkProcessor socialNetworkProcessor = new SocialNetworkProcessor(
@@ -62,7 +61,7 @@ public class SocialNetworkingApplicationShould {
     }
 
     @Test
-    public void let_us_subscribe_to_a_user_timeline_and_view_a_list_of_all_subscriptions() throws UnsupportedEncodingException {
+    public void lets_us_subscribe_to_a_user_timeline_and_view_a_list_of_all_subscriptions() throws UnsupportedEncodingException {
         long now = System.currentTimeMillis();
         TweakedApplicationClock applicationClock = new TweakedApplicationClock(now);
         SocialNetworkProcessor socialNetworkProcessor = new SocialNetworkProcessor(
