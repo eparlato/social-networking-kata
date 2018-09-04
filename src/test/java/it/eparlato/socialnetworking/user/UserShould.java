@@ -2,8 +2,6 @@ package it.eparlato.socialnetworking.user;
 
 import it.eparlato.socialnetworking.message.Message;
 import org.junit.Test;
-
-import java.util.Hashtable;
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;

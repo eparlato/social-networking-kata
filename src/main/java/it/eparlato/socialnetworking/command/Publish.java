@@ -1,23 +1,19 @@
 package it.eparlato.socialnetworking.command;
 
 import it.eparlato.socialnetworking.user.User;
-import it.eparlato.socialnetworking.user.repository.UserRepository;
 
 public class Publish implements Command {
-    private final UserRepository userRepository;
     private final long timeOfPublishing;
-    private String username;
+    private final User user;
     private String message;
 
-    public Publish(String username, String message, UserRepository userRepository, long timeOfPublishing) {
-        this.username = username;
+    public Publish(User user, String message, long timeOfPublishing) {
+        this.user = user;
         this.message = message;
-        this.userRepository = userRepository;
         this.timeOfPublishing = timeOfPublishing;
     }
 
     public void execute() {
-        User user = userRepository.getUser(username);
         user.publish(message, timeOfPublishing);
     }
 
@@ -29,7 +25,7 @@ public class Publish implements Command {
 
         Publish that = (Publish) obj;
 
-        if (!(this.username.equals(that.username))) {
+        if (!(this.user.equals(that.user))) {
             return false;
         }
 

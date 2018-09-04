@@ -19,7 +19,7 @@ public class ConcreteInputParser implements InputParser {
             String userName = inputSplit[0].trim();
             String message = inputSplit[1].trim();
 
-            return new Publish(userName, message, userRepository, applicationClock.currentTimeMillis());
+            return new Publish(userRepository.getUser(userName), message, applicationClock.currentTimeMillis());
         }
 
         if(input.contains("follows")) {
@@ -27,15 +27,15 @@ public class ConcreteInputParser implements InputParser {
             String follower = inputSplit[0].trim();
             String followed = inputSplit[1].trim();
 
-            return new Follow(follower, followed, userRepository);
+            return new Follow(userRepository.getUser(follower), userRepository.getUser(followed));
         }
 
         if(input.contains("wall")) {
             String username = input.split("wall")[0].trim();
 
-            return new Wall(username, userRepository, applicationClock.currentTimeMillis());
+            return new Wall(userRepository.getUser(username), applicationClock.currentTimeMillis());
         }
 
-        return new ViewTimeline(input, userRepository, applicationClock.currentTimeMillis());
+        return new ViewTimeline(userRepository.getUser(input), applicationClock.currentTimeMillis());
     }
 }

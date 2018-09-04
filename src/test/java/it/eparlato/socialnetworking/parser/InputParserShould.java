@@ -2,7 +2,9 @@ package it.eparlato.socialnetworking.parser;
 
 import it.eparlato.socialnetworking.command.*;
 import it.eparlato.socialnetworking.time.TweakedApplicationClock;
+import it.eparlato.socialnetworking.user.ConcreteUser;
 import it.eparlato.socialnetworking.user.repository.DummyUserRepository;
+import it.eparlato.socialnetworking.user.repository.InMemoryUserRepository;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,13 +19,13 @@ public class InputParserShould {
     @Before
     public void setup() {
         now = System.currentTimeMillis();
-        parser = new ConcreteInputParser(new DummyUserRepository(), new TweakedApplicationClock(now));
+        parser = new ConcreteInputParser(new InMemoryUserRepository(), new TweakedApplicationClock(now));
     }
 
     @Test
     public void return_a_Publish_command_if_the_input_is_a_username_followed_by_a_message() {
         input = "Bob -> Damn! We lost!";
-        expectedCommand = new Publish("Bob", "Damn! We lost!", new DummyUserRepository(), now);
+        expectedCommand = new Publish(new ConcreteUser("Bob"), "Damn! We lost!", now);
 
         assertEquals(expectedCommand, parser.parse(input));
     }
@@ -31,7 +33,7 @@ public class InputParserShould {
     @Test
     public void return_a_ViewTimeline_command_if_the_is_input_a_user_name() {
         input = "Alice";
-        expectedCommand = new ViewTimeline("Alice", new DummyUserRepository(), now);
+        expectedCommand = new ViewTimeline(new ConcreteUser("Alice"), now);
 
         assertEquals(expectedCommand, parser.parse(input));
     }
@@ -39,15 +41,15 @@ public class InputParserShould {
     @Test
     public void return_a_Follow_command_if_the_input_contains_the_string_follows() {
         input = "Alice follows Charlie";
-        expectedCommand = new Follow("Alice", "Charlie", new DummyUserRepository());
+        expectedCommand = new Follow(new ConcreteUser("Alice"), new ConcreteUser("Charlie"));
 
         assertEquals(expectedCommand, parser.parse(input));
     }
 
     @Test
-    public void reurn_a_Wall_command_if_the_input_contains_the_string_wall() {
+    public void return_a_Wall_command_if_the_input_contains_the_string_wall() {
         input = "Bob wall";
-        expectedCommand = new Wall("Bob", new DummyUserRepository(), now);
+        expectedCommand = new Wall(new ConcreteUser("Bob"), now);
 
         assertEquals(expectedCommand, parser.parse(input));
     }
