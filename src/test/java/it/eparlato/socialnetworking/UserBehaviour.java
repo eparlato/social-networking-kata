@@ -1,6 +1,8 @@
-package it.eparlato.socialnetworking.user;
+package it.eparlato.socialnetworking;
 
 import it.eparlato.socialnetworking.message.Message;
+import it.eparlato.socialnetworking.user.ConcreteUser;
+import it.eparlato.socialnetworking.user.User;
 import org.junit.Test;
 import java.util.List;
 

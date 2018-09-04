@@ -1,4 +1,6 @@
-package it.eparlato.socialnetworking.time;
+package it.eparlato.socialnetworking;
+
+import it.eparlato.socialnetworking.time.ApplicationClock;
 
 public class TweakedApplicationClock implements ApplicationClock {
     private final long ONE_SECOND = 1000;

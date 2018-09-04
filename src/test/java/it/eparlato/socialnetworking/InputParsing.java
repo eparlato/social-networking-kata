@@ -1,7 +1,8 @@
-package it.eparlato.socialnetworking.parser;
+package it.eparlato.socialnetworking;
 
 import it.eparlato.socialnetworking.command.*;
-import it.eparlato.socialnetworking.time.TweakedApplicationClock;
+import it.eparlato.socialnetworking.parser.ConcreteInputParser;
+import it.eparlato.socialnetworking.parser.InputParser;
 import it.eparlato.socialnetworking.user.ConcreteUser;
 import it.eparlato.socialnetworking.user.repository.InMemoryUserRepository;
 import org.junit.Before;

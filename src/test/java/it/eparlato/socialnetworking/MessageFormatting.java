@@ -1,6 +1,6 @@
-package it.eparlato.socialnetworking.message;
+package it.eparlato.socialnetworking;
 
-import it.eparlato.socialnetworking.time.TweakedApplicationClock;
+import it.eparlato.socialnetworking.message.Message;
 import org.junit.Before;
 import org.junit.Test;
 

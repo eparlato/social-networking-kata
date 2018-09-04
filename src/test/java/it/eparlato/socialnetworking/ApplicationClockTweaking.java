@@ -1,4 +1,4 @@
-package it.eparlato.socialnetworking.time;
+package it.eparlato.socialnetworking;
 
 import org.junit.Before;
 import org.junit.Test;

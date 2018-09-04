@@ -2,7 +2,7 @@ package it.eparlato.socialnetworking.acceptance;
 
 import it.eparlato.socialnetworking.SocialNetworkProcessor;
 import it.eparlato.socialnetworking.parser.ConcreteInputParser;
-import it.eparlato.socialnetworking.time.TweakedApplicationClock;
+import it.eparlato.socialnetworking.TweakedApplicationClock;
 import it.eparlato.socialnetworking.user.repository.InMemoryUserRepository;
 import org.junit.After;
 import org.junit.Before;
