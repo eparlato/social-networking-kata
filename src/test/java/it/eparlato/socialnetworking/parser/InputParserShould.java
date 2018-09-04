@@ -3,7 +3,6 @@ package it.eparlato.socialnetworking.parser;
 import it.eparlato.socialnetworking.command.*;
 import it.eparlato.socialnetworking.time.TweakedApplicationClock;
 import it.eparlato.socialnetworking.user.ConcreteUser;
-import it.eparlato.socialnetworking.user.repository.DummyUserRepository;
 import it.eparlato.socialnetworking.user.repository.InMemoryUserRepository;
 import org.junit.Before;
 import org.junit.Test;
