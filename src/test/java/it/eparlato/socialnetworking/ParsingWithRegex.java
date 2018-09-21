@@ -12,16 +12,20 @@ public class ParsingWithRegex {
 
     @Test
     public void regex_should_match_the_username_alone() {
-        assertTrue("Username doesn't match", Pattern.matches(regex, "Alice"));
+        assertTrue("Username doesn't match", matches("Alice"));
     }
 
     @Test
     public void regex_should_match_the_wall_command() {
-        assertTrue("Wall command doesn't match", Pattern.matches(regex, "Bob wall"));
+        assertTrue("Wall command doesn't match", matches( "Bob wall"));
     }
 
     @Test
     public void regex_should_match_the_publish_command() {
-        assertTrue("Publish command doesn't match", Pattern.matches(regex, "Ed -> Hi"));
+        assertTrue("Publish command doesn't match", matches( "Ed -> Hi"));
+    }
+
+    private boolean matches(String input) {
+        return Pattern.matches(regex, input);
     }
 }
