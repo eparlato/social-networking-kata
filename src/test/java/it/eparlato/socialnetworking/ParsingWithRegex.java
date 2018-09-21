@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 public class ParsingWithRegex {
 
-    private String regex = "(\\w*)((\\s(wall))*)";
+    private String regex = "(\\w*)((\\s(wall|->))*)(\\s\\w*)*";
 
     @Test
     public void regex_should_match_the_username_alone() {
@@ -18,5 +18,10 @@ public class ParsingWithRegex {
     @Test
     public void regex_should_match_the_wall_command() {
         assertTrue("Wall command doesn't match", Pattern.matches(regex, "Bob wall"));
+    }
+
+    @Test
+    public void regex_should_match_the_publish_command() {
+        assertTrue("Publish command doesn't match", Pattern.matches(regex, "Ed -> Hi"));
     }
 }
