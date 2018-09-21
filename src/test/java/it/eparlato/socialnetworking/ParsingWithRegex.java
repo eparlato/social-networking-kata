@@ -11,7 +11,7 @@ public class ParsingWithRegex {
     private String regex = "(\\w*)(\\s(wall|->|follows)(\\s\\w*)*)*";
 
     @Test
-    public void regex_should_match_the_username_alone() {
+    public void regex_should_match_the_viewtimeline_command() {
         assertTrue("Username doesn't match", matches("Alice"));
     }
 
