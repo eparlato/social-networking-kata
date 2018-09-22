@@ -1,19 +1,16 @@
 package it.eparlato.socialnetworking.parser;
 
-import it.eparlato.socialnetworking.command.*;
-import it.eparlato.socialnetworking.time.ApplicationClock;
-import it.eparlato.socialnetworking.user.repository.UserRepository;
+import it.eparlato.socialnetworking.command.Command;
+import it.eparlato.socialnetworking.command.CommandBuilder;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegexInputParser implements InputParser {
-    private final ApplicationClock applicationClock;
-    private final UserRepository userRepository;
+    private CommandBuilder commandBuilder;
 
-    public RegexInputParser(UserRepository userRepository, ApplicationClock applicationClock) {
-        this.userRepository = userRepository;
-        this.applicationClock = applicationClock;
+    public RegexInputParser(CommandBuilder commandBuilder) {
+        this.commandBuilder = commandBuilder;
     }
 
     public Command parse(String input) {
@@ -25,7 +22,6 @@ public class RegexInputParser implements InputParser {
         String command = matcher.group(3);
         String commandParameter = matcher.group(5);
 
-        CommandBuilder commandBuilder = new SimpleCommandBuilder(userRepository, applicationClock);
         return commandBuilder.build(username, command, commandParameter);
     }
 }
