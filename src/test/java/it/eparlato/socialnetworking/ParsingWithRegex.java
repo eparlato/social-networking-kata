@@ -1,5 +1,6 @@
 package it.eparlato.socialnetworking;
 
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -11,7 +12,14 @@ import static org.junit.Assert.assertTrue;
 
 public class ParsingWithRegex {
 
+    private Pattern pattern;
+    Matcher matcher;
     private String regex = "(\\w*)(\\s(wall|->|follows)(\\s(\\w.*))*)*";
+
+    @Before
+    public void setup() {
+        pattern = Pattern.compile(regex);
+    }
 
     @Test
     public void regex_should_match_the_viewtimeline_command() {
@@ -35,8 +43,7 @@ public class ParsingWithRegex {
 
     @Test
     public void should_be_possible_to_extract_follows_command_sintax_from_regex_groups() {
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher("Bob follows Charlie");
+        matcher = pattern.matcher("Bob follows Charlie");
         matcher.find();
 
         assertEquals("First group doesn't contain the username","Bob", matcher.group(1));
@@ -46,8 +53,7 @@ public class ParsingWithRegex {
 
     @Test
     public void should_be_possible_to_exctract_publish_command_sintax_from_regex_groups() {
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher("Charlie -> I'm in New York today! Anyone wants to have a coffee?");
+        matcher = pattern.matcher("Charlie -> I'm in New York today! Anyone wants to have a coffee?");
         matcher.find();
 
         assertEquals("First group doesn't contain the username","Charlie", matcher.group(1));
