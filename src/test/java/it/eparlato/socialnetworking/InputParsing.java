@@ -1,7 +1,7 @@
 package it.eparlato.socialnetworking;
 
 import it.eparlato.socialnetworking.command.*;
-import it.eparlato.socialnetworking.parser.ConcreteInputParser;
+import it.eparlato.socialnetworking.parser.RegexInputParser;
 import it.eparlato.socialnetworking.parser.InputParser;
 import it.eparlato.socialnetworking.user.InMemoryUser;
 import it.eparlato.socialnetworking.user.repository.InMemoryUserRepository;
@@ -19,7 +19,7 @@ public class InputParsing {
     @Before
     public void setup() {
         now = System.currentTimeMillis();
-        parser = new ConcreteInputParser(new InMemoryUserRepository(), new TweakedApplicationClock(now));
+        parser = new RegexInputParser(new InMemoryUserRepository(), new TweakedApplicationClock(now));
     }
 
     @Test

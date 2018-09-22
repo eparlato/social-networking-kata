@@ -1,7 +1,7 @@
 package it.eparlato.socialnetworking.acceptance;
 
 import it.eparlato.socialnetworking.SocialNetworkProcessor;
-import it.eparlato.socialnetworking.parser.ConcreteInputParser;
+import it.eparlato.socialnetworking.parser.RegexInputParser;
 import it.eparlato.socialnetworking.TweakedApplicationClock;
 import it.eparlato.socialnetworking.user.repository.InMemoryUserRepository;
 import org.junit.After;
@@ -41,7 +41,7 @@ public class SocialNetworkingApplicationFeatures {
     @Test
     public void shows_the_user_timeline_when_the_user_name_is_typed() throws UnsupportedEncodingException {
         SocialNetworkProcessor socialNetworkProcessor = new SocialNetworkProcessor(
-                new ConcreteInputParser(new InMemoryUserRepository(), applicationClock));
+                new RegexInputParser(new InMemoryUserRepository(), applicationClock));
 
         applicationClock.subtractMinutes(5);
         socialNetworkProcessor.process("Alice -> I love the weather today");
@@ -67,7 +67,7 @@ public class SocialNetworkingApplicationFeatures {
     @Test
     public void lets_us_subscribe_to_a_user_timeline_and_view_a_list_of_all_subscriptions() throws UnsupportedEncodingException {
         SocialNetworkProcessor socialNetworkProcessor = new SocialNetworkProcessor(
-                new ConcreteInputParser(new InMemoryUserRepository(), applicationClock));
+                new RegexInputParser(new InMemoryUserRepository(), applicationClock));
 
         applicationClock.subtractMinutes(5);
         socialNetworkProcessor.process("Alice -> I love the weather today");
