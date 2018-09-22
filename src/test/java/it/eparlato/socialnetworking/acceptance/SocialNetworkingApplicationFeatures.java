@@ -20,6 +20,7 @@ public class SocialNetworkingApplicationFeatures {
     ByteArrayOutputStream canvas = new ByteArrayOutputStream();
     PrintStream originalSystemOut = System.out;
     PrintStream hijackedSystemOut = new PrintStream(canvas);
+    SocialNetworkProcessor socialNetworkProcessor;
 
     long now;
     TweakedApplicationClock applicationClock;
@@ -31,6 +32,9 @@ public class SocialNetworkingApplicationFeatures {
 
         now = System.currentTimeMillis();
         applicationClock = new TweakedApplicationClock(now);
+
+        socialNetworkProcessor = new SocialNetworkProcessor(
+                new RegexInputParser(new SimpleCommandBuilder(new InMemoryUserRepository(), applicationClock)));
     }
 
     @After
@@ -39,13 +43,8 @@ public class SocialNetworkingApplicationFeatures {
         System.setOut(originalSystemOut);
     }
 
-    // TODO: refactor, duplicated creation of SocialNetworkProcessor
-
     @Test
     public void shows_the_user_timeline_when_the_user_name_is_typed() throws UnsupportedEncodingException {
-        SocialNetworkProcessor socialNetworkProcessor = new SocialNetworkProcessor(
-                new RegexInputParser(new SimpleCommandBuilder(new InMemoryUserRepository(), applicationClock)));
-
         applicationClock.subtractMinutes(5);
         socialNetworkProcessor.process("Alice -> I love the weather today");
 
@@ -69,9 +68,6 @@ public class SocialNetworkingApplicationFeatures {
 
     @Test
     public void lets_us_subscribe_to_a_user_timeline_and_view_a_list_of_all_subscriptions() throws UnsupportedEncodingException {
-        SocialNetworkProcessor socialNetworkProcessor = new SocialNetworkProcessor(
-                new RegexInputParser(new SimpleCommandBuilder(new InMemoryUserRepository(), applicationClock)));
-
         applicationClock.subtractMinutes(5);
         socialNetworkProcessor.process("Alice -> I love the weather today");
 
