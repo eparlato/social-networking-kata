@@ -22,20 +22,10 @@ public class RegexInputParser implements InputParser {
         matcher.find();
 
         String username = matcher.group(1);
+        String command = matcher.group(3);
         String commandParameter = matcher.group(5);
 
-        if (input.contains("->")) {
-            return new Publish(userRepository.getUser(username), commandParameter, applicationClock.currentTimeMillis());
-        }
-
-        if(input.contains("follows")) {
-            return new Follow(userRepository.getUser(username), userRepository.getUser(commandParameter));
-        }
-
-        if(input.contains("wall")) {
-            return new Wall(userRepository.getUser(username), applicationClock.currentTimeMillis());
-        }
-
-        return new ViewTimeline(userRepository.getUser(username), applicationClock.currentTimeMillis());
+        CommandBuilder commandBuilder = new SimpleCommandBuilder(userRepository, applicationClock);
+        return commandBuilder.build(username, command, commandParameter);
     }
 }
