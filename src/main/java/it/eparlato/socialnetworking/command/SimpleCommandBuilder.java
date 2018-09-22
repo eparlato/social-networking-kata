@@ -14,21 +14,18 @@ public class SimpleCommandBuilder implements CommandBuilder {
 
     @Override
     public Command build(String username, String command, String commandParameter) {
-        if (command == null)
-            return new ViewTimeline(userRepository.getUser(username), applicationClock.currentTimeMillis());
-
-        if (command.contains("->")) {
+        if ("->".equals(command)) {
             return new Publish(userRepository.getUser(username), commandParameter, applicationClock.currentTimeMillis());
         }
 
-        if(command.contains("follows")) {
+        if ("follows".equals(command)) {
             return new Follow(userRepository.getUser(username), userRepository.getUser(commandParameter));
         }
 
-        if(command.contains("wall")) {
+        if ("wall".equals(command)) {
             return new Wall(userRepository.getUser(username), applicationClock.currentTimeMillis());
         }
 
-        return null;
+        return new ViewTimeline(userRepository.getUser(username), applicationClock.currentTimeMillis());
     }
 }
