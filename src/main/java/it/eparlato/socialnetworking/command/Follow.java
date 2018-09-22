@@ -18,17 +18,17 @@ public class Follow implements Command {
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof Follow)) {
+        if (!(obj instanceof Follow)) {
             return false;
         }
 
         Follow that = (Follow) obj;
 
-        if(!(this.follower.equals(that.follower))) {
+        if (!(this.follower.equals(that.follower))) {
             return false;
         }
 
-        if(!(this.followed.equals(that.followed))) {
+        if (!(this.followed.equals(that.followed))) {
             return false;
         }
 

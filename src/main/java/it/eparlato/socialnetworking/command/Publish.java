@@ -33,7 +33,7 @@ public class Publish implements Command {
             return false;
         }
 
-        if(!(this.timeOfPublishing == that.timeOfPublishing)) {
+        if (!(this.timeOfPublishing == that.timeOfPublishing)) {
             return false;
         }
 

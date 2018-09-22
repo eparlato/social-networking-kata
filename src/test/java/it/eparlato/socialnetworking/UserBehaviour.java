@@ -4,6 +4,7 @@ import it.eparlato.socialnetworking.message.Message;
 import it.eparlato.socialnetworking.user.InMemoryUser;
 import it.eparlato.socialnetworking.user.User;
 import org.junit.Test;
+
 import java.util.List;
 
 import static junit.framework.TestCase.assertEquals;
@@ -43,7 +44,8 @@ public class UserBehaviour {
 
     @Test
     public void a_user_should_add_a_user_on_top_of_his_followed_list_when_it_follows_a_user() {
-        User bob = new InMemoryUser("Bob");;
+        User bob = new InMemoryUser("Bob");
+        ;
         User alice = new InMemoryUser("Alice");
 
         User charlie = new InMemoryUser("Charlie");

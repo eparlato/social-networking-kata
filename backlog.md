@@ -43,8 +43,6 @@
 
 ## TODO
 
-* refactor the ConcreteInputParser
-
 * inject a InputWrapper and a OutputWrapper into the application, instead of system.in and System.out?
   * Should the message receive an OutputWrapper in the constructor?
 

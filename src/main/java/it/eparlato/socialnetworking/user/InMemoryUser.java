@@ -53,7 +53,7 @@ public class InMemoryUser implements User {
 
     @Override
     public boolean equals(Object obj) {
-        if(!(obj instanceof InMemoryUser)) {
+        if (!(obj instanceof InMemoryUser)) {
             return false;
         }
 

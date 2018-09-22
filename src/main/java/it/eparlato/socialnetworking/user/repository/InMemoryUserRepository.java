@@ -2,6 +2,7 @@ package it.eparlato.socialnetworking.user.repository;
 
 import it.eparlato.socialnetworking.user.InMemoryUser;
 import it.eparlato.socialnetworking.user.User;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,7 +11,7 @@ public class InMemoryUserRepository implements UserRepository {
     Map<String, User> repository = new HashMap<String, User>();
 
     public User getUser(String username) {
-        User user =  findUserInRepository(username);
+        User user = findUserInRepository(username);
 
         if (user == null) {
             user = new InMemoryUser(username);

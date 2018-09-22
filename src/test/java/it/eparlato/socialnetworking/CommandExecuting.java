@@ -20,7 +20,7 @@ public class CommandExecuting {
 
         Command publish = new Publish(user, message, time);
 
-        context.checking(new Expectations(){
+        context.checking(new Expectations() {
             {
                 oneOf(user).publish(message, time);
             }

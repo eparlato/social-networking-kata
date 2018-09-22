@@ -21,6 +21,7 @@ public class Message {
         return text + getElapsedTime(timeOfReading);
     }
 
+    // TODO: refactor
     private String getElapsedTime(long now) {
         long elapsedTime = now - timeOfPublishing;
         long elapsedMinutes = TimeUnit.MILLISECONDS.toMinutes(elapsedTime);

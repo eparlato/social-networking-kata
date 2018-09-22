@@ -60,7 +60,7 @@ public class SocialNetworkingApplicationFeatures {
 
         String expected =
                 "I love the weather today (5 minutes ago)" + LINE_SEPARATOR +
-                "Good game though. (1 minute ago)" + LINE_SEPARATOR +
+                        "Good game though. (1 minute ago)" + LINE_SEPARATOR +
                         "Damn! We lost! (2 minutes ago)" + LINE_SEPARATOR;
 
         assertEquals(expected, canvas.toString("UTF-8"));
@@ -87,9 +87,9 @@ public class SocialNetworkingApplicationFeatures {
 
         String expected =
                 "Charlie - I'm in New York today! Anyone wants to have a coffee? (15 seconds ago)" + LINE_SEPARATOR +
-                 "Bob - Good game though. (1 minute ago)" + LINE_SEPARATOR +
-                 "Bob - Damn! We lost! (2 minutes ago)" + LINE_SEPARATOR +
-                 "Alice - I love the weather today (5 minutes ago)" + LINE_SEPARATOR;
+                        "Bob - Good game though. (1 minute ago)" + LINE_SEPARATOR +
+                        "Bob - Damn! We lost! (2 minutes ago)" + LINE_SEPARATOR +
+                        "Alice - I love the weather today (5 minutes ago)" + LINE_SEPARATOR;
 
         assertEquals(expected, canvas.toString("UTF-8"));
     }
