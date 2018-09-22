@@ -11,7 +11,7 @@ import static org.junit.Assert.assertTrue;
 
 public class ParsingWithRegex {
 
-    private String regex = "(\\w*)(\\s(wall|->|follows)(\\s(\\w*))*)*";
+    private String regex = "(\\w*)(\\s(wall|->|follows)(\\s(\\w.*))*)*";
 
     @Test
     public void regex_should_match_the_viewtimeline_command() {
@@ -42,6 +42,17 @@ public class ParsingWithRegex {
         assertEquals("First group doesn't contain the username","Bob", matcher.group(1));
         assertEquals("Third group doesn't contain the command", "follows", matcher.group(3));
         assertEquals("Fifth group doesn't contain the command parameter", "Charlie", matcher.group(5));
+    }
+
+    @Test
+    public void should_be_possible_to_exctract_publish_command_sintax_from_regex_groups() {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher("Charlie -> I'm in New York today! Anyone wants to have a coffee?");
+        matcher.find();
+
+        assertEquals("First group doesn't contain the username","Charlie", matcher.group(1));
+        assertEquals("Third group doesn't contain the command", "->", matcher.group(3));
+        assertEquals("Fifth group doesn't contain the command parameter", "I'm in New York today! Anyone wants to have a coffee?", matcher.group(5));
     }
 
     private boolean matches(String input) {
