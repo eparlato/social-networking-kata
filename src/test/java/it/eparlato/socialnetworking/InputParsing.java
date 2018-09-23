@@ -19,7 +19,7 @@ public class InputParsing {
     @Before
     public void setup() {
         now = System.currentTimeMillis();
-        parser = new RegexInputParser(new SimpleCommandBuilder(new InMemoryUserRepository(), new TweakedApplicationClock(now)));
+        parser = new RegexInputParser(new SimpleCommandFactory(new InMemoryUserRepository(), new TweakedApplicationClock(now)));
     }
 
     @Test

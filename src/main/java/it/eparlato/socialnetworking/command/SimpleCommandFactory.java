@@ -3,11 +3,11 @@ package it.eparlato.socialnetworking.command;
 import it.eparlato.socialnetworking.time.ApplicationClock;
 import it.eparlato.socialnetworking.user.repository.UserRepository;
 
-public class SimpleCommandBuilder implements CommandBuilder {
+public class SimpleCommandFactory implements CommandFactory {
     private final UserRepository userRepository;
     private final ApplicationClock applicationClock;
 
-    public SimpleCommandBuilder(UserRepository userRepository, ApplicationClock applicationClock) {
+    public SimpleCommandFactory(UserRepository userRepository, ApplicationClock applicationClock) {
         this.userRepository = userRepository;
         this.applicationClock = applicationClock;
     }

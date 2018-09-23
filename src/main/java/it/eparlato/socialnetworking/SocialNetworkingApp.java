@@ -1,6 +1,6 @@
 package it.eparlato.socialnetworking;
 
-import it.eparlato.socialnetworking.command.SimpleCommandBuilder;
+import it.eparlato.socialnetworking.command.SimpleCommandFactory;
 import it.eparlato.socialnetworking.parser.RegexInputParser;
 import it.eparlato.socialnetworking.parser.InputParser;
 import it.eparlato.socialnetworking.time.SystemApplicationClock;
@@ -31,7 +31,7 @@ public class SocialNetworkingApp {
 
     public static void main(String[] args) {
         SocialNetworkingApp app = new SocialNetworkingApp(System.in,
-                new RegexInputParser(new SimpleCommandBuilder(new InMemoryUserRepository(), new SystemApplicationClock())));
+                new RegexInputParser(new SimpleCommandFactory(new InMemoryUserRepository(), new SystemApplicationClock())));
         app.run();
     }
 }

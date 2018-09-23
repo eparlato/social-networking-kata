@@ -1,16 +1,16 @@
 package it.eparlato.socialnetworking.parser;
 
 import it.eparlato.socialnetworking.command.Command;
-import it.eparlato.socialnetworking.command.CommandBuilder;
+import it.eparlato.socialnetworking.command.CommandFactory;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegexInputParser implements InputParser {
-    private CommandBuilder commandBuilder;
+    private CommandFactory commandFactory;
 
-    public RegexInputParser(CommandBuilder commandBuilder) {
-        this.commandBuilder = commandBuilder;
+    public RegexInputParser(CommandFactory commandFactory) {
+        this.commandFactory = commandFactory;
     }
 
     public Command parse(String input) {
@@ -22,6 +22,6 @@ public class RegexInputParser implements InputParser {
         String command = matcher.group(3);
         String commandParameter = matcher.group(5);
 
-        return commandBuilder.build(username, command, commandParameter);
+        return commandFactory.build(username, command, commandParameter);
     }
 }

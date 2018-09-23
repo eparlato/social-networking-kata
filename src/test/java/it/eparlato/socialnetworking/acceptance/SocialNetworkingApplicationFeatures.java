@@ -1,7 +1,7 @@
 package it.eparlato.socialnetworking.acceptance;
 
 import it.eparlato.socialnetworking.SocialNetworkProcessor;
-import it.eparlato.socialnetworking.command.SimpleCommandBuilder;
+import it.eparlato.socialnetworking.command.SimpleCommandFactory;
 import it.eparlato.socialnetworking.parser.RegexInputParser;
 import it.eparlato.socialnetworking.TweakedApplicationClock;
 import it.eparlato.socialnetworking.user.repository.InMemoryUserRepository;
@@ -34,7 +34,7 @@ public class SocialNetworkingApplicationFeatures {
         applicationClock = new TweakedApplicationClock(now);
 
         socialNetworkProcessor = new SocialNetworkProcessor(
-                new RegexInputParser(new SimpleCommandBuilder(new InMemoryUserRepository(), applicationClock)));
+                new RegexInputParser(new SimpleCommandFactory(new InMemoryUserRepository(), applicationClock)));
     }
 
     @After
