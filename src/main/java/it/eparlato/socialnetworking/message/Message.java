@@ -21,11 +21,16 @@ public class Message {
         return text + getElapsedTime(timeOfReading);
     }
 
-    // TODO: refactor
     private String getElapsedTime(long now) {
         long elapsedTime = now - timeOfPublishing;
-        long elapsedMinutes = TimeUnit.MILLISECONDS.toMinutes(elapsedTime);
-        long elapsedSeconds = TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
+        long elapsedMinutes = getElapsedMinutes(elapsedTime);
+        long elapsedSeconds = getElapsedSeconds(elapsedTime);
+
+        return formattedElapsedTime(elapsedMinutes, elapsedSeconds);
+    }
+
+    private String formattedElapsedTime(long elapsedMinutes, long elapsedSeconds)  {
+        // Returns minutes or seconds, no minutes + seconds (ex. 2 minutes 32 seconds)
 
         if (elapsedMinutes > 0) {
             String minutesString = elapsedMinutes == 1 ? "minute" : "minutes";
@@ -38,6 +43,14 @@ public class Message {
         }
 
         return "";
+    }
+
+    private long getElapsedSeconds(long elapsedTime) {
+        return TimeUnit.MILLISECONDS.toSeconds(elapsedTime);
+    }
+
+    private long getElapsedMinutes(long elapsedTime) {
+        return TimeUnit.MILLISECONDS.toMinutes(elapsedTime);
     }
 
     public void showTimelineOnConsoleStartingFrom(long timeOfReading) {
