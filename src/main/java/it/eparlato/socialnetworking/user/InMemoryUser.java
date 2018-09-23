@@ -15,6 +15,8 @@ public class InMemoryUser implements User {
         this.username = username;
     }
 
+    // FIXME Open Closed Principle violation, Dependency Inversion Principle violation: the class depends on Message.
+    // If I wanted to add behaviour to Message (ex. a new parameter in its constructor) I would need to modify this class as well
     public void publish(String message, long timeOfPublishing) {
         messages.push(new Message(message, timeOfPublishing, username));
     }

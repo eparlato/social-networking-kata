@@ -15,6 +15,7 @@ public class SocialNetworkingApp {
 
     private SocialNetworkProcessor socialNetworkProcessor;
 
+    // FIXME Dependency Inversion Principle violation: the class depends on InputStream
     public SocialNetworkingApp(InputStream inputStream, InputParser inputParser) {
         this.inputStream = inputStream;
         this.inputParser = inputParser;

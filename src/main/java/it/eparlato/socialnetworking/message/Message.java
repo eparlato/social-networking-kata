@@ -53,12 +53,13 @@ public class Message {
         return TimeUnit.MILLISECONDS.toMinutes(elapsedTime);
     }
 
-    public void showTimelineOnConsoleStartingFrom(long timeOfReading) {
-        System.out.println(formatForViewTimelineStartingFrom(timeOfReading));
-    }
-
     public String formatForWallStartingFrom(long timeOfWall) {
         return username + " - " + formatForViewTimelineStartingFrom(timeOfWall);
+    }
+
+    // FIXME Dependency Inversion Principle violation: the class depends on System
+    public void showTimelineOnConsoleStartingFrom(long timeOfReading) {
+        System.out.println(formatForViewTimelineStartingFrom(timeOfReading));
     }
 
     public void showWallOnConsoleStartingFrom(long timeOfWall) {

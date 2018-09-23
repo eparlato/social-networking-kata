@@ -43,7 +43,7 @@
 
 ## TODO
 
-* inject a InputWrapper and a OutputWrapper into the application, instead of system.in and System.out?
-  * Should the message receive an OutputWrapper in the constructor?
-
-* next time try a different mocking framework, such as Mockito.
+* solve the SOLID violations
+  * inject a InputWrapper and a OutputWrapper into the application, instead of system.in and System.out?
+* Refactor User class, and find a proper name
+* remove the ifs in CommandFactory
